@@ -1,0 +1,228 @@
+body {
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    /* Disable native mouse cursor for custom dual-ring tracking */
+    cursor: none;
+}
+
+/* If touch screen is detected, we revert to default cursor behaviors */
+.no-custom-cursor,
+.no-custom-cursor * {
+    cursor: auto !important;
+}
+
+/* Interactive component overrides to disable native cursors */
+a,
+button,
+select,
+input,
+textarea,
+[role="button"],
+.maplibregl-canvas,
+.maplibregl-popup-close-button {
+    cursor: none !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(3, 7, 18, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 204, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 204, 0.5);
+}
+
+/* Hologram Grid Overlay Effect */
+.cyber-grid-overlay {
+    background-image: linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+/* Custom Neon Effects */
+.shadow-neon-cyan {
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.25);
+}
+
+.shadow-neon-pink {
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.25);
+}
+
+/* Glassmorphic Panel Blueprint */
+.glass-panel {
+    background: rgba(3, 7, 18, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Cursor styling declarations */
+#custom-cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: #00ffcc;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate3d(-50%, -50%, 0);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    opacity: 1;
+}
+
+#custom-cursor-ring {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid #00ffcc;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate3d(-50%, -50%, 0);
+    transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    opacity: 1;
+}
+
+/* Animated Pulsing State Dot */
+@keyframes pulse-cyan {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7);
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+        box-shadow: 0 0 12px 4px rgba(0, 255, 204, 0);
+    }
+}
+
+.pulse-dot {
+    animation: pulse-cyan 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.2;
+    }
+}
+
+.preloader-reactor-ring {
+    animation: pulse-ring 3s infinite ease-in-out;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 204, 0.05) 50%);
+    background-size: 100% 4px;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+}
+
+/* Maplibre Popup Glassmorphic UI Override */
+.maplibregl-popup-content {
+    background: rgba(3, 7, 18, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(0, 255, 204, 0.3) !important;
+    color: #f1f5f9 !important;
+    border-radius: 16px !important;
+    padding: 0px !important;
+    /* Managed by custom content wrapper */
+    font-family: 'Inter', sans-serif !important;
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 255, 204, 0.15) !important;
+    width: 320px !important;
+    max-width: 320px !important;
+    overflow: hidden !important;
+}
+
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+    border-bottom-color: rgba(0, 255, 204, 0.3) !important;
+}
+
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+    border-top-color: rgba(0, 255, 204, 0.3) !important;
+}
+
+.maplibregl-popup-anchor-left .maplibregl-popup-tip {
+    border-right-color: rgba(0, 255, 204, 0.3) !important;
+}
+
+.maplibregl-popup-anchor-right .maplibregl-popup-tip {
+    border-left-color: rgba(0, 255, 204, 0.3) !important;
+}
+
+.maplibregl-popup-close-button {
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 6px 10px !important;
+    font-size: 16px !important;
+    background: rgba(3, 7, 18, 0.6) !important;
+    border-bottom-left-radius: 12px !important;
+    z-index: 10;
+}
+
+.maplibregl-popup-close-button:hover {
+    color: #ff00ff !important;
+    background: rgba(3, 7, 18, 0.9) !important;
+}
+
+/* Custom HTML Markers pulse ripples */
+@keyframes marker-ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+.marker-ripple-effect {
+    animation: marker-ripple 1.5s infinite ease-out;
+}
+
+/* Autocomplete results dropdown overlay custom scroll properties */
+#autocomplete-results::-webkit-scrollbar {
+    width: 4px;
+}

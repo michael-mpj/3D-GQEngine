@@ -1,0 +1,267 @@
+{
+            dubai: {
+                center: [
+            55.2708,
+            25.2048
+        ], // Burj Khalifa Area
+                zoom: 15,
+                pitch: 62,
+                bearing: -25,
+                title: 'Dubai Downtown Matrix',
+                initEntities: [
+            { type: 'cyber-tower', offset: [
+                    0,
+                    0
+                ], altitude: 0, scale: 1.6, title: "Burj Khalifa Apex Core", category: "Infrastructure", desc: "Dynamic server router core."
+            },
+            { type: 'orbital-ring', offset: [
+                    0.003,
+                    -0.002
+                ], altitude: 150, scale: 1.2, title: "Downtown Collector Node", category: "Energy", desc: "Holographic tracking node."
+            }
+        ],
+                pois: [
+            {
+                        category: "Attractions",
+                        lngLat: [
+                    55.2744,
+                    25.1972
+                ],
+                        title: "The Dubai Fountain Show",
+                        desc: "Visual spectacular combining neon laser displays and synchronized audio frequencies.",
+                        images: [
+                    "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1549944850-84e00be4115b?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/M166_4r0Lsc",
+                        phone: "+97143661688",
+                        web: "https://www.thedubaifountain.com",
+                        social: { insta: "https://instagram.com/dubai", fb: "https://facebook.com/dubai", x: "https://x.com/dubai"
+                }
+            },
+            {
+                        category: "Shopping",
+                        lngLat: [
+                    55.2784,
+                    25.1986
+                ],
+                        title: "The Dubai Mall Matrix",
+                        desc: "High density quantum luxury retail terminal hosting over 1200 commercial nodes.",
+                        images: [
+                    "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/Z0XGg4L3uQA",
+                        phone: "+971800382246255",
+                        web: "https://thedubaimall.com",
+                        social: { insta: "https://instagram.com/thedubaimall", fb: "https://facebook.com/thedubaimall", x: "https://x.com/thedubaimall"
+                }
+            },
+            {
+                        category: "Transit",
+                        lngLat: [
+                    55.2690,
+                    25.2015
+                ],
+                        title: "Burj Khalifa Metro Terminal",
+                        desc: "High speed pneumatic mag-level transit hub connecting Dubai metropolitan zones.",
+                        images: [
+                    "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/5D2t0bOatcQ",
+                        phone: "+9718009090",
+                        web: "https://rta.ae",
+                        social: { insta: "https://instagram.com/rta_dubai", fb: "https://facebook.com/rtadubai", x: "https://x.com/rta_dubai"
+                }
+            }
+        ]
+    },
+            abudhabi: {
+                center: [
+            54.3548,
+            24.4741
+        ], // Corniche District
+                zoom: 14.8,
+                pitch: 60,
+                bearing: 30,
+                title: 'Abu Dhabi Capitol Sector',
+                initEntities: [
+            { type: 'holo-crystal', offset: [
+                    0,
+                    0
+                ], altitude: 50, scale: 1.5, title: "Marina Spire Focus", category: "Research", desc: "Secured data storage beacon."
+            },
+            { type: 'cyber-tower', offset: [
+                    -0.003,
+                    0.003
+                ], altitude: 0, scale: 1.4, title: "Corniche Sector Gateway", category: "Defense", desc: "Friction atmospheric radar array."
+            }
+        ],
+                pois: [
+            {
+                        category: "Attractions",
+                        lngLat: [
+                    54.3640,
+                    24.4810
+                ],
+                        title: "Abu Dhabi Corniche Beach",
+                        desc: "Seaside coastal park hosting continuous security patrols and dynamic monitoring systems.",
+                        images: [
+                    "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/W9LgG_2FpY8",
+                        phone: "+97126786000",
+                        web: "https://visitabudhabi.ae",
+                        social: { insta: "https://instagram.com/visitabudhabi", fb: "https://facebook.com/visitabudhabi", x: "https://x.com/visitabudhabi"
+                }
+            },
+            {
+                        category: "POI",
+                        lngLat: [
+                    54.3210,
+                    24.4340
+                ],
+                        title: "Sheikh Zayed Grand Mosque",
+                        desc: "Architectural masterpiece with capacity for over 41,000 worshippers.",
+                        images: [
+                    "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/XmZ_i7vS6R0",
+                        phone: "+97124191919",
+                        web: "https://www.szgmc.gov.ae",
+                        social: { insta: "https://instagram.com/szgmc_ae", fb: "https://facebook.com/szgmc", x: "https://x.com/szgmc"
+                }
+            }
+        ]
+    },
+            sharjah: {
+                center: [
+            55.3908,
+            25.3211
+        ], // Majaz Waterfront
+                zoom: 15,
+                pitch: 58,
+                bearing: 110,
+                title: 'Sharjah Majaz Lagoon Sector',
+                initEntities: [
+            { type: 'orbital-ring', offset: [
+                    0,
+                    0
+                ], altitude: 100, scale: 1.4, title: "Majaz Water Flux Ring", category: "Energy", desc: "Hydro-thermal collector terminal."
+            }
+        ],
+                pois: [
+            {
+                        category: "Attractions",
+                        lngLat: [
+                    55.3920,
+                    25.3225
+                ],
+                        title: "Al Majaz Waterfront",
+                        desc: "Panoramic lagoon hub holding visual installations, sonic musical fountains, and family play coordinates.",
+                        images: [
+                    "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/vAnQ8kO51d8",
+                        phone: "+97165110555",
+                        web: "https://almajaz.ae",
+                        social: { insta: "https://instagram.com/sharjah", fb: "https://facebook.com/sharjah", x: "https://x.com/sharjah"
+                }
+            },
+            {
+                        category: "Shopping",
+                        lngLat: [
+                    55.3888,
+                    25.3340
+                ],
+                        title: "Central Souk Sharjah",
+                        desc: "Historic architecture node housing traditional merchants under iconic blue vaulted domes.",
+                        images: [
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/XyY39fC25s4",
+                        phone: "+97165111111",
+                        web: "https://sharjahcommerce.ae",
+                        social: { insta: "https://instagram.com/sharjahcommerce", fb: "https://facebook.com/sharjahcommerce", x: "https://x.com/sharjahcommerce"
+                }
+            }
+        ]
+    },
+            rasalkhaimah: {
+                center: [
+            56.0286,
+            25.8812
+        ], // Dhayah Fort Area
+                zoom: 14.5,
+                pitch: 52,
+                bearing: -15,
+                title: 'Ras Al Khaimah Dhayah Fort Sector',
+                initEntities: [
+            { type: 'holo-crystal', offset: [
+                    0,
+                    0
+                ], altitude: 80, scale: 1.3, title: "Fort Sentinel Focus", category: "Research", desc: "Securing historic spatial archives."
+            }
+        ],
+                pois: [
+            {
+                        category: "Attractions",
+                        lngLat: [
+                    56.0298,
+                    25.8825
+                ],
+                        title: "Dhayah Fort Lookout",
+                        desc: "Historic 16th century hilltop battlefort offering sweeping panoramas of coastal oasis domains.",
+                        images: [
+                    "https://images.unsplash.com/photo-1582730147233-0df152015091?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/0G6TIn1y3C0",
+                        phone: "+97172338998",
+                        web: "https://visitrasalkhaimah.com",
+                        social: { insta: "https://instagram.com/visitrasalkhaimah", fb: "https://facebook.com/visitrasalkhaimah", x: "https://x.com/visitrasalkhaimah"
+                }
+            }
+        ]
+    },
+            jebeljais: {
+                center: [
+            56.1245,
+            25.9452
+        ], // Highest Mountain Range Peak
+                zoom: 12.8,
+                pitch: 72,
+                bearing: 85,
+                title: 'UAE Jebel Jais Ridge',
+                initEntities: [
+            { type: 'holo-crystal', offset: [
+                    0,
+                    0
+                ], altitude: 2000, scale: 2.2, title: "Jebel Jais Apex Crystal", category: "Research", desc: "Prismatic altitude monitoring core."
+            },
+            { type: 'orbital-ring', offset: [
+                    0.012,
+                    -0.008
+                ], altitude: 2200, scale: 1.8, title: "Highwind Turbine Array", category: "Energy", desc: "Harnessing dynamic mountain draft flow fields."
+            }
+        ],
+                pois: [
+            {
+                        category: "Attractions",
+                        lngLat: [
+                    56.1265,
+                    25.9468
+                ],
+                        title: "Jais Flight Zipline Peak",
+                        desc: "The world's longest dynamic zipline, cutting through atmospheric coordinates at up to 150 km/h.",
+                        images: [
+                    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+                ],
+                        youtube: "https://www.youtube.com/embed/G6j5n08q_Xw",
+                        phone: "+97172046250",
+                        web: "https://visitjebeljais.com",
+                        social: { insta: "https://instagram.com/jebeljais", fb: "https://facebook.com/jebeljais", x: "https://x.com/jebeljais"
+                }
+            }
+        ]
+    }
+};

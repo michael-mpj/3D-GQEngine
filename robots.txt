@@ -1,0 +1,13 @@
+# robots.txt
+User-agent: *
+Allow: /
+
+# Disallow sensitive files
+Disallow: /assets/models/
+Disallow: /assets/private/
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://yourdomain.com/sitemap.xml
