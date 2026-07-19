@@ -1,0 +1,36 @@
+{
+  "name": "3D Geospatial Quantum Engine",
+  "short_name": "GeoQuantum",
+  "description": "MapLibre + Three.js 3D Geospatial Engine",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#020617",
+  "theme_color": "#00ffcc",
+  "lang": "en",
+  "categories": [
+    "navigation",
+    "maps",
+    "developer",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/maskable-512.png",
+      "sizes": "512x512",
+      "purpose": "maskable",
+      "type": "image/png"
+    }
+  ]
+}
