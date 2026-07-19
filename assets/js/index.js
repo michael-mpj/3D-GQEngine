@@ -15,9 +15,9 @@ let anchorLngLat = [55.1565, 25.0768]; // Centered on Dubai Marina / Palm Jumeir
 let modelTransform = {};
 
 // Custom Cursor Coordinate States
-let mouseX = -100, mouseY = -100;
-let ringX = -100, ringY = -100;
-let dotX = -100, dotY = -100;
+let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+let ringX = window.innerWidth / 2, ringY = window.innerHeight / 2;
+let dotX = window.innerWidth / 2, dotY = window.innerHeight / 2;
 
 // Active filters state
 let poiLayersVisibility = {
@@ -324,29 +324,33 @@ document.addEventListener('mouseover', (e) => {
         dot.style.height = '4px';
         dot.style.backgroundColor = '#ff00ff';
     } else {
-        ring.style.width = '30px';
-        ring.style.height = '30px';
+        ring.style.width = '36px';
+        ring.style.height = '36px';
         ring.style.borderColor = '#00ffcc';
         ring.style.backgroundColor = 'transparent';
-        dot.style.width = '6px';
-        dot.style.height = '6px';
+        dot.style.width = '8px';
+        dot.style.height = '8px';
         dot.style.backgroundColor = '#00ffcc';
     }
 });
 
 function animateCustomCursor() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
+    try {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
 
-    dotX += (mouseX - dotX) * 0.35;
-    dotY += (mouseY - dotY) * 0.35;
+        dotX += (mouseX - dotX) * 0.35;
+        dotY += (mouseY - dotY) * 0.35;
 
-    const ring = document.getElementById('custom-cursor-ring');
-    const dot = document.getElementById('custom-cursor-dot');
+        const ring = document.getElementById('custom-cursor-ring');
+        const dot = document.getElementById('custom-cursor-dot');
 
-    if (ring && dot) {
-        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-        dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
+        if (ring && dot) {
+            ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+            dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
+        }
+    } catch (e) {
+        console.warn("Custom cursor animation interrupted: ", e);
     }
     requestAnimationFrame(animateCustomCursor);
 }
@@ -687,7 +691,7 @@ const SECTOR_PRESETS = {
         zoom: 15,
         pitch: 62,
         bearing: -25,
-        title: 'Dubai Downtown Matrix',
+        title: 'Dubai',
         initEntities: [
             { type: 'cyber-tower', offset: [0, 0], altitude: 0, scale: 1.6, title: "Burj Khalifa Apex Core", category: "Infrastructure", desc: "Dynamic server router core." },
             { type: 'orbital-ring', offset: [0.003, -0.002], altitude: 150, scale: 1.2, title: "Downtown Collector Node", category: "Energy", desc: "Holographic tracking node." }
@@ -741,7 +745,7 @@ const SECTOR_PRESETS = {
         zoom: 14.8,
         pitch: 60,
         bearing: 30,
-        title: 'Abu Dhabi Capitol Sector',
+        title: 'AbuDhabi',
         initEntities: [
             { type: 'holo-crystal', offset: [0, 0], altitude: 50, scale: 1.5, title: "Marina Spire Focus", category: "Research", desc: "Secured data storage beacon." },
             { type: 'cyber-tower', offset: [-0.003, 0.003], altitude: 0, scale: 1.4, title: "Corniche Sector Gateway", category: "Defense", desc: "Friction atmospheric radar array." }
@@ -780,7 +784,7 @@ const SECTOR_PRESETS = {
         zoom: 15,
         pitch: 58,
         bearing: 110,
-        title: 'Sharjah Majaz Lagoon Sector',
+        title: 'Sharaja',
         initEntities: [
             { type: 'orbital-ring', offset: [0, 0], altitude: 100, scale: 1.4, title: "Majaz Water Flux Ring", category: "Energy", desc: "Hydro-thermal collector terminal." }
         ],
@@ -818,7 +822,7 @@ const SECTOR_PRESETS = {
         zoom: 14.5,
         pitch: 52,
         bearing: -15,
-        title: 'Ras Al Khaimah Dhayah Fort Sector',
+        title: 'Ras alkhaima',
         initEntities: [
             { type: 'holo-crystal', offset: [0, 0], altitude: 80, scale: 1.3, title: "Fort Sentinel Focus", category: "Research", desc: "Securing historic spatial archives." }
         ],
@@ -843,7 +847,7 @@ const SECTOR_PRESETS = {
         zoom: 12.8,
         pitch: 72,
         bearing: 85,
-        title: 'UAE Jebel Jais Ridge',
+        title: 'United Arab Emirates',
         initEntities: [
             { type: 'holo-crystal', offset: [0, 0], altitude: 2000, scale: 2.2, title: "Jebel Jais Apex Crystal", category: "Research", desc: "Prismatic altitude monitoring core." },
             { type: 'orbital-ring', offset: [0.012, -0.008], altitude: 2200, scale: 1.8, title: "Highwind Turbine Array", category: "Energy", desc: "Harnessing dynamic mountain draft flow fields." }
