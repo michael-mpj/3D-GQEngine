@@ -197,7 +197,7 @@ const preloaderLogs = [
     "Establishing real-time connection to Jebel Jais elevation arrays...",
     "Compiling procedural environment atmospheric filters...",
     "Loading GLTF/GLB 3D spatial loader engines...",
-    "Assembling Google Tag Manager tracking nodes (GTM-PROD999)...",
+    "Assembling Google Tag Manager tracking nodes (GTM-NKQ8C9HH)...",
     "Establishing secure connection to OpenStreetMap engine...",
     "PWA Standalone config verification sequence completed."
 ];
