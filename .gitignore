@@ -144,7 +144,6 @@ vite.config.ts.timestamp-*
 
 # Local backup / legacy files (do not commit)
 index-bakup.html
-index-backup.html
 *.backup
 *.bak
 
@@ -152,6 +151,3 @@ index-backup.html
 .env
 .env.*
 !.env.example
-
-
-index-bakup.html
