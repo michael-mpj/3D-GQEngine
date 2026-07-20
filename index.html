@@ -106,8 +106,6 @@
     <link rel="stylesheet" href="assets/css/fancybox.css" />
 
     <!-- PWA Settings -->
-    <link rel="manifest" id="pwa-manifest-link" />
-
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
 
@@ -756,6 +754,45 @@
 
     <!-- Map and Custom WebGL Integration Code -->
     <script src="assets/js/index.js"></script>
+
+    <!-- PWA Service Worker Registration (offline boot + version handling) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => {
+                        console.log('[SW] Quantum Matrix offline engine registered:', reg.scope);
+                        // Auto-pull new shell silently when a deploy lands
+                        setInterval(() => reg.update(), 60 * 1000);
+                    })
+                    .catch((err) => console.warn('[SW] Registration failed:', err));
+
+                // Apply a silent shell refresh once a new SW is ready
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (sessionStorage.getItem('sw_reload') !== 'pending') return;
+                    sessionStorage.removeItem('sw_reload');
+                    window.location.reload();
+                });
+
+                navigator.serviceWorker.addEventListener('message', (e) => {
+                    if (e.data && e.data.type === 'SW_UPDATED') {
+                        console.log('[SW] New engine build available:', e.data.version, e.data.buildTime);
+                    }
+                });
+            });
+
+            // Ask the SW to take control on next load after a deploy
+            if (navigator.serviceWorker.controller) {
+                navigator.serviceWorker.controller.postMessage({ type: 'SW_CHECK_UPDATE' });
+            }
+            window.addEventListener('beforeunload', () => {
+                if (navigator.serviceWorker.controller) {
+                    sessionStorage.setItem('sw_reload', 'pending');
+                    navigator.serviceWorker.controller.postMessage({ type: 'SW_CHECK_UPDATE' });
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

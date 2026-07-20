@@ -1,374 +1,115 @@
-
 # 🛰️ 3D Geospatial Quantum Engine
 
-<defs>
-  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 255, 204, 0.04)" stroke-width="1" />
-  </pattern>
-  <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#020617" />
-    <stop offset="100%" stop-color="#090514" />
-  </linearGradient>
-  <linearGradient id="laser" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" stop-color="rgba(0, 255, 204, 0)" />
-    <stop offset="50%" stop-color="rgba(0, 255, 204, 0.4)" />
-    <stop offset="100%" stop-color="rgba(0, 255, 204, 0)" />
-  </linearGradient>
-</defs>
+An immersive, high-performance **3D Geospatial Engine** that fuses **MapLibre GL JS**
+and **Three.js** into a single synchronized WebGL rendering pipeline.
 
-<rect width="100%" height="100%" fill="url(#bg-grad)" />
-<rect width="100%" height="100%" fill="url(#grid)" />
-
-<!-- Isometric Radar Rings in Center -->
-<g transform="translate(0, 0)">
-  <ellipse cx="400" cy="160" rx="320" ry="120" fill="none" stroke="rgba(0, 255, 204, 0.08)" stroke-width="1.5" />
-  <ellipse cx="400" cy="160" rx="240" ry="90" fill="none" stroke="rgba(0, 255, 204, 0.15)" stroke-width="1" />
-  <ellipse cx="400" cy="160" rx="160" ry="60" fill="none" stroke="rgba(255, 0, 255, 0.2)" stroke-width="1" />
-</g>
-
-<!-- Rotating Dial Graphics -->
-<g class="rotate-cw">
-  <circle cx="400" cy="160" r="140" fill="none" stroke="rgba(0, 255, 204, 0.25)" stroke-width="1" stroke-dasharray="20 40 10 5" />
-  <circle cx="400" cy="160" r="100" fill="none" stroke="rgba(255, 0, 255, 0.3)" stroke-width="1.5" stroke-dasharray="120 40 10 30" />
-</g>
-<g class="rotate-ccw">
-  <circle cx="400" cy="160" r="120" fill="none" stroke="rgba(0, 255, 204, 0.15)" stroke-width="1" stroke-dasharray="5 15 30 10" />
-  <circle cx="400" cy="160" r="80" fill="none" stroke="rgba(139, 92, 246, 0.35)" stroke-width="1.5" stroke-dasharray="60 10" />
-</g>
-
-<!-- Bezier Network Data Links -->
-<path d="M 220 110 Q 310 30 400 160" fill="none" stroke="#ff00ff" stroke-width="1.5" class="data-link" />
-<path d="M 400 160 Q 490 290 580 210" fill="none" stroke="#00ffcc" stroke-width="1.5" class="data-link" />
-<path d="M 220 110 Q 400 240 580 210" fill="none" stroke="rgba(139, 92, 246, 0.4)" stroke-width="1" stroke-dasharray="4 4" />
-
-<!-- Pulsing Radar Waves on Nodes -->
-<circle cx="220" cy="110" r="10" fill="none" stroke="#ff00ff" stroke-width="1" class="pulse-ring-1" />
-<circle cx="580" cy="210" r="10" fill="none" stroke="#00ffcc" stroke-width="1" class="pulse-ring-2" />
-
-<!-- Physical Solid Nodes -->
-<!-- Core Hub -->
-<circle cx="400" cy="160" r="10" fill="#030712" stroke="#00ffcc" stroke-width="3" />
-<circle cx="400" cy="160" r="4" fill="#00ffcc" />
-<!-- Node Alpha -->
-<circle cx="220" cy="110" r="7" fill="#030712" stroke="#ff00ff" stroke-width="2.5" />
-<circle cx="220" cy="110" r="3" fill="#ff00ff" />
-<!-- Node Beta -->
-<circle cx="580" cy="210" r="7" fill="#030712" stroke="#00ffcc" stroke-width="2.5" />
-<circle cx="580" cy="210" r="3" fill="#00ffcc" />
-
-<!-- Scanning Laser Line -->
-<rect x="0" y="158" width="800" height="4" fill="url(#laser)" class="scanner" />
-
-<!-- Hud Text Overlay -->
-<text x="30" y="50" font-family="'JetBrains Mono', monospace" font-size="12" fill="#00ffcc" font-weight="bold" tracking-wide>SYSTEM: ACTIVE</text>
-<text x="30" y="70" font-family="'JetBrains Mono', monospace" font-size="10" fill="rgba(255,255,255,0.4)">LATENCY: 12ms // FPS: 60</text>
-
-<text x="770" y="50" font-family="'JetBrains Mono', monospace" font-size="11" fill="#ff00ff" text-anchor="end" font-weight="bold" class="blinker">WARP MATRIX SECURE</text>
-<text x="770" y="70" font-family="'JetBrains Mono', monospace" font-size="10" fill="rgba(255,255,255,0.4)" text-anchor="end">GRID STABLE [1.90-HYPER]</text>
-
-<!-- Central Project Brand Title -->
-<text x="400" y="275" font-family="'Inter', sans-serif" font-size="18" fill="#ffffff" font-weight="bold" letter-spacing="0.3em" text-anchor="middle">GEO-SPATIAL QUANTUM MATRIX</text>
-<text x="400" y="295" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00ffcc" letter-spacing="0.1em" text-anchor="middle">3D CARTOGRAPHIC PROJECTION ENGINE</text>
-
-# 🛰️ 3D Geospatial Quantum Engine
-
-An immersive, high-performance **3D Geospatial Engine** that combines **MapLibre GL JS** and **Three.js** into a synchronized WebGL rendering environment.
-
-Built as a **Progressive Web Application (PWA)**, the engine enables users to deploy interactive structures, load cloud-hosted GLB models, create animated geospatial connections, visualize terrain, and simulate live weather conditions in real time.
+Built as a **Progressive Web App (PWA)**, the engine lets you deploy interactive
+3D structures, load cloud-hosted GLB models, draw animated geospatial links, render
+real terrain (DEM), and simulate live weather — all in real time, and **offline**
+after the first load.
 
 ---
 
 ## ✨ Features
 
 ### 🌍 Unified 3D WebGL Environment
-
 - Seamless MapLibre GL JS + Three.js integration
 - Shared synchronized WebGL rendering pipeline
-- Accurate GPS → Three.js coordinate conversion using Mercator projection
-- Hardware accelerated rendering
-- High-performance animation loop
-
----
+- Accurate GPS → Three.js coordinate conversion via Mercator projection
+- Hardware-accelerated rendering & high-performance animation loop
 
 ### 🏙️ Interactive 3D City Rendering
-
 - Extruded vector buildings
 - Dynamic building heights
 - Real-time shadow rendering
 - Adjustable terrain exaggeration
-- Smooth zoom transitions
-
----
 
 ### ⛰️ Digital Elevation Models (DEM)
-
-Supports real terrain rendering using Digital Elevation Models.
-
-Examples include:
-
-- Grand Canyon
-- Mountain ranges
-- Valleys
-- Hills
-- Coastal terrain
-
----
+- Real terrain rendering using Digital Elevation Models
+- Toggleable 3D terrain layer (`setupTerrain` / `toggleTerrain`)
 
 ### 🚀 Quantum Deployment Sandbox
-
-Deploy interactive objects anywhere on the map.
-
-Supported deployment types include:
-
-- 📡 Beacon
-- 💎 Holographic Crystal
-- 🛰 Orbital Ring
-- 🧭 Marker Nodes
-- ⚡ Energy Towers
-
-Deployment is performed by simply double-clicking anywhere on the map.
-
----
+Deploy interactive objects anywhere on the map by **double-clicking**.
+Supported types: `cyber-tower`, `holo-crystal`, `orbital-ring`, `custom-glb`.
 
 ### 📦 GLB Model Loader
-
-Load custom cloud-hosted GLB models.
-
-Features include:
-
-- Remote URL loading
-- Automatic scaling
-- Automatic positioning
-- Rotation controls
-- Fallback procedural meshes
-- CORS compatible
-
----
+- Remote GLB URL loading (CORS-compatible)
+- Automatic scaling & positioning
+- Fallback procedural mesh on load failure
 
 ### 🔗 Animated Network Connections
-
-Automatically create animated links between deployed nodes.
-
-Includes:
-
-- Quadratic Bezier curves
-- Traveling data packets
+- Quadratic Bezier curves between sequentially deployed nodes
+- Traveling data packets (pulse spheres)
 - Animated pulse effects
-- Dynamic routing
-
----
 
 ### 📍 Live GPS Integration
-
-Uses the browser Geolocation API.
-
-Features:
-
-- Current position detection
-- Spawn personal beacon
-- Coordinate display
-- Accuracy indicator
-
----
+- Browser Geolocation API (permission-prompted)
+- Personal beacon spawn + coordinate display
 
 ### ☁️ Live Weather Synchronization
-
-Powered by **Open-Meteo**.
-
-Weather influences rendering in real time.
-
-Supported effects:
-
-- ☀️ Clear
-- 🌧 Rain
-- ❄ Snow
-- 🌩 Storm
-- 🌫 Fog
-
----
+- Powered by **Open-Meteo**
+- Drives particle system mode (cyber-sparks / golden-rain / blizzard)
 
 ### ✨ Particle Simulation
-
-GPU-accelerated particle systems including:
-
-- Neon Sparks
-- Quantum Blizzards
-- Solar Rain
-- Energy Dust
-- Atmospheric Particles
-
----
+- GPU-accelerated: Neon Sparks, Golden Rain, Quantum Blizzard
 
 ### 🕒 Chronological Telemetry
-
-Displays:
-
-- Local Time
-- UTC Offset
-- Weather Status
-- Coordinates
-- FPS
-- Network Latency
-
----
+- Local time, UTC offset, weather, anchor coordinates, FPS, latency
 
 ### 📍 Dynamic POI Filtering
-
-Filter map data by category.
-
-Supported filters:
-
-- Attractions
-- Shopping
-- Restaurants
-- Transit
-- Hotels
-- Public Services
-
----
+- Filter by category: Attractions, Shopping, Transit, General POI
+- Fancybox image galleries + YouTube embeds
 
 ### 🎮 Cinematic Controls
-
-Interactive navigation includes:
-
-- 2D / 3D Toggle
-- Orbit Camera
-- Pitch Control
-- Bearing Rotation
-- Smooth Fly-To Animations
-- Automatic Camera Sweep
-
----
+- 2D / 3D toggle, orbit camera, pitch, bearing, fly-to, auto-sweep
 
 ### 🔊 Retro Audio Synthesizer
-
-Built entirely using the Web Audio API.
-
-Generated sounds include:
-
-- Click
-- Spawn
-- Delete
-- Warp
-- Hover
-- Notifications
-
-No external audio files required.
+- Pure Web Audio API (no audio files): click, spawn, warp, link, delete, hover
 
 ---
 
-## ⚙️ Technology Stack
+## 🛰️ Technology Stack
 
 | Category | Technology |
 |-----------|------------|
-| Mapping | MapLibre GL JS |
-| 3D Engine | Three.js |
-| Model Loader | GLTFLoader |
-| Styling | Tailwind CSS CDN |
+| Mapping | MapLibre GL JS (local `assets/js/maplibre-gl.js`) |
+| 3D Engine | Three.js r128 (local `assets/js/three.min.js`) |
+| Model Loader | GLTFLoader (local `assets/js/GLTFLoader.js`) |
+| Styling | Tailwind CSS (CDN play build) |
 | Weather | Open-Meteo API |
 | Audio | Web Audio API |
-| Analytics | Google Analytics 4 |
-| Tag Manager | Google Tag Manager |
-| PWA | Service Workers + Manifest |
+| Analytics | Google Analytics 4 + Google Tag Manager (consent-gated) |
+| PWA | Service Worker (`sw.js`) + Web App Manifest |
 
 ---
 
 ## 🚀 Quick Start
 
-### Clone Repository
-
-```bash
-git clone https://github.com/your-username/3d-geospatial-engine.git
-cd 3d-geospatial-engine
-```
-
----
-
-### Run Local Server
-
-Because the application registers a Service Worker and fetches external assets, run it through an HTTP server.
+Because the app registers a **Service Worker** and loads local + external assets,
+serve it over **HTTP** (not `file://`).
 
 ### Python
-
 ```bash
 python3 -m http.server 8080
 ```
 
 ### Node.js
-
 ```bash
-npm install -g serve
-serve .
+npx serve .
 ```
 
-### VS Code
-
-Install the **Live Server** extension.
-
-Right-click:
-
-```
-index.html
-```
-
-Select:
-
-```
-Open with Live Server
-```
-
-Then open:
-
-```
-http://localhost:8080
-```
+Then open `http://localhost:8080`.
 
 ---
 
 ## 📦 Deployment
 
-### Vercel
+Static host (Vercel / GitHub Pages / Netlify / any static server).
+No build step required — it is a plain static site.
 
-1. Push repository to GitHub.
-2. Login to Vercel.
-3. Import the repository.
-4. Click **Deploy**.
-
-No build configuration required.
-
----
-
-### GitHub Pages
-
-Navigate to:
-
-```
-Repository Settings
-```
-
-Then:
-
-```
-Pages
-```
-
-Select:
-
-```
-Deploy from branch
-```
-
-Choose:
-
-```
-main
-```
-
-Your site becomes available at:
-
-```
-https://your-username.github.io/your-repository/
-```
+> **Production note:** replace the Tailwind **play CDN** (`cdn.tailwindcss.com`)
+> with a compiled local stylesheet to remove the runtime dependency and the
+> associated console warning.
 
 ---
 
@@ -376,24 +117,26 @@ https://your-username.github.io/your-repository/
 
 | Action | Result |
 |---------|--------|
-| Right Click + Drag | Rotate Camera |
+| Right Click + Drag | Rotate camera (pitch & bearing) |
 | Scroll Wheel | Zoom |
-| Double Click | Deploy Structure |
-| Preset Warp | Fly to Landmark |
-| 3D Toggle | Switch Between 2D & 3D |
+| Double Click | Deploy selected structure |
+| Sector Preset | Fly-to landmark + spawn preset meshes/POIs |
+| 3D Toggle | Switch 2D / 3D projection |
 | Install Button | Install as PWA |
 
 ---
 
-## 🌍 Preset Destinations
+## 🌍 Sector Preset Destinations
 
-Built-in camera fly-to locations include:
+Built-in camera fly-to locations (UAE):
 
-- Manhattan
-- Tokyo
-- Paris
-- Pyramids of Giza
-- Grand Canyon
+- **Dubai** — Burj Khalifa area (cyber-tower + orbital-ring)
+- **Abu Dhabi** — Corniche (holo-crystal + cyber-tower)
+- **Sharjah** — Majaz Lagoon (orbital-ring)
+- **Ras Al Khaimah** — Dhayah Fort (holo-crystal)
+- **Jebel Jais** — Ridge peak (holo-crystal + orbital-ring)
+
+Each preset spawns its 3D entities and shows category-filtered POI markers.
 
 ---
 
@@ -401,95 +144,85 @@ Built-in camera fly-to locations include:
 
 ```
 3d-geospatial-engine/
-│
-├── index.html
+├── index.html              # App shell + PWA registration
+├── index-bakup.html       # Reference snapshot (do not edit)
+├── manifest.json           # PWA manifest
+├── sw.js                  # Service worker (offline + versioned cache)
+├── privacy.html           # Privacy policy
+├── terms.html             # Terms of service
+├── robots.txt
+├── sitemap.xml
 ├── README.md
-├── manifest.json
-├── sw.js
+├── CHANGELOG.md
+├── SECURITY.md
+├── CODE_OF_CONDUCT.md
+├── LICENSE                # MIT
 ├── assets/
-│   ├── models/
-│   └── icons/
-└── screenshots/
+│   ├── css/
+│   │   ├── index.css          # App + custom cursor styles
+│   │   ├── maplibre-gl.css
+│   │   └── fancybox.css
+│   ├── js/
+│   │   ├── index.js          # Map + WebGL + UI logic
+│   │   ├── maplibre-gl.js
+│   │   ├── three.min.js
+│   │   ├── GLTFLoader.js
+│   │   └── fancybox.umd.js
+│   ├── icons/              # PWA icons (192 / 512 / maskable)
+│   ├── screenshots/
+│   └── data/
+└── ...
 ```
 
 ---
 
 ## 📡 Progressive Web App
 
-Features include:
+- **Offline support** — app shell + all local assets are precached on first
+  load; the site boots with **no internet** afterward.
+- **Versioned cache** — `sw.js` uses a date-stamped cache key
+  (`geoquantum-YYYY-MM-DD-HHMM`); old caches are purged automatically
+  on activation.
+- **Silent updates** — the page polls for a new service-worker build and
+  performs a background refresh, then reloads once on next navigation.
+- Install prompt + app manifest + background caching + fast startup.
 
-- Offline Support
-- Service Worker
-- Install Prompt
-- App Manifest
-- Background Caching
-- Fast Startup
-- Native App Experience
+See [`SECURITY.md`](./SECURITY.md) for the caching / third-party trust boundary.
 
 ---
 
-## 📈 Analytics
+## 📈 Analytics (Consent-Gated)
 
-Integrated with:
+Integrated with **Google Analytics 4** + **Google Tag Manager**.
 
-- Google Analytics 4
-- Google Tag Manager
+- Events fire through `logTrackingEvent(eventName, params)`.
+- **No analytics are sent until the user accepts** the cookie/terms consent
+  banner (`localStorage['geoquantum_consent'] === 'accepted'`).
+- IDs are centralized in `index.js` as `GTM_ID` / `GA4_ID` constants.
+- All telemetry is wrapped in `try/catch` and never blocks the app.
 
-Tracks:
-
-- Page Views
-- User Events
-- Camera Actions
-- Deployments
-- Weather Requests
-- Performance Metrics
+> Replace the placeholder `GTM-NKQ8C9HH` / `G-V8RF39YJC5` IDs with
+> your real container / property IDs to begin collecting data.
 
 ---
 
 ## 🔒 Security
 
-The application is designed with modern web security practices.
+See [`SECURITY.md`](./SECURITY.md). Highlights:
 
-Features include:
-
-- HTTPS Compatible
-- CORS-safe Asset Loading
-- Offline Cache Isolation
-- Service Worker Sandboxing
-- Browser Geolocation Permissions
+- HTTPS-compatible (required for SW + Geolocation in production)
+- Consent-gated analytics; no first-party cookies set by the app
+- Service-worker sandboxing; analytics/ads beacons excluded from cache
+- Geolocation requested only on explicit user action
 
 ---
 
 ## 🎯 Performance
 
-Optimized for:
-
-- Desktop
-- Mobile
-- Tablets
-- Touch Devices
-
-Performance techniques:
-
-- Shared WebGL Context
-- GPU Buffer Geometry
-- Frustum Culling
-- Lazy GLB Loading
-- RequestAnimationFrame Rendering
-- Efficient Particle Systems
-
----
-
-## 📸 Screenshots
-
-```
-screenshots/
-├── overview.png
-├── deployment.png
-├── weather.png
-├── terrain.png
-└── pwa.png
-```
+- Shared WebGL context (MapLibre + Three.js on one canvas)
+- GPU buffer geometry & efficient particle systems
+- `requestAnimationFrame` render loop
+- Optimized for desktop, mobile, tablet, and touch devices
 
 ---
 
@@ -500,64 +233,41 @@ screenshots/
 - [ ] Drone Simulation
 - [ ] AI Route Prediction
 - [ ] BIM Model Support
-- [ ] Indoor Navigation
 - [ ] Real-Time Traffic
-- [ ] Terrain Editing
 - [ ] Satellite Imagery Layers
-- [ ] Digital Twin Synchronization
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome.
+See [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md). Contributions welcome:
 
-1. Fork the repository
-2. Create a feature branch
-
-```bash
-git checkout -b feature/my-feature
-```
-
-1. Commit changes
-
-```bash
-git commit -m "Added new feature"
-```
-
-1. Push
-
-```bash
-git push origin feature/my-feature
-```
-
-1. Open a Pull Request.
+1. Fork & create a feature branch (`git checkout -b feature/my-feature`)
+2. Commit (`git commit -m "Added new feature"`)
+3. Push (`git push origin feature/my-feature`)
+4. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-Released under the **MIT License**.
-
-You are free to use, modify, distribute, and build upon this project for personal or commercial applications.
+Released under the **MIT License** — see [`LICENSE`](./LICENSE).
+Free to use, modify, and distribute for personal or commercial use.
 
 ---
 
 ## 👨‍💻 Author
 
-**Michael Joseph**
-
-**MJ Design Studio**
-
+**Michael Joseph** — MJ Design Studio
 3D Mapping • GIS • UI/UX • WebGL • Three.js • MapLibre • Interactive Experiences
 
 ---
 
 ## ⭐ Support
 
-If you found this project useful, consider giving it a ⭐ on GitHub.
-
-It helps others discover the project and supports future development.
+If this project helped you, consider starring it on GitHub. It helps others
+discover the project and supports future development.
 
 ---
+
 **Built with ❤️ using MapLibre GL JS, Three.js, WebGL, and modern browser technologies.**

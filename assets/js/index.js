@@ -41,86 +41,20 @@ const POI_CATEGORY_COLORS = {
     'POI': '#ffaa00'
 };
 
-// Custom Web App Manifest setup
-(function setupPWAManifest() {
-    try {
-        const manifestObj = {
-            "name": "3D Geospatial UAE Quantum Engine",
-            "short_name": "UAEGeoQuantum",
-            "description": "High-fidelity spatial telemetry matrix visualizer",
-            "start_url": window.location.href,
-            "display": "standalone",
-            "orientation": "any",
-            "background_color": "#030712",
-            "theme_color": "#030712",
-            "icons": [
-                {
-                    "src": "https://placehold.co/192x192/030712/00ffcc?text=UAE_GEO",
-                    "sizes": "192x192",
-                    "type": "image/png"
-                },
-                {
-                    "src": "https://placehold.co/512x512/030712/00ffcc?text=UAE_3D",
-                    "sizes": "512x512",
-                    "type": "image/png"
-                }
-            ]
-        };
+// Custom Analytics Logger
+// ---- Tracking config (swap in your real IDs) ----
+const GTM_ID = 'GTM-NKQ8C9HH';     // Google Tag Manager container
+const GA4_ID = 'G-V8RF39YJC5';     // GA4 measurement ID
+const ANALYTICS_ENABLED = GTM_ID !== '' && GA4_ID !== '';
 
-        const manifestStr = JSON.stringify(manifestObj);
-        const manifestBlob = new Blob([manifestStr], { type: 'application/json' });
-        const manifestUrl = URL.createObjectURL(manifestBlob);
-        document.getElementById('pwa-manifest-link').setAttribute('href', manifestUrl);
-    } catch (err) {
-        console.warn("Dynamic PWA manifest initialization interrupted: ", err);
-    }
-})();
-
-// Register Dynamic Service Worker to enable offline capability
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        const swContent = `
-            const CACHE_NAME = 'geo-quantum-v5';
-            const MAP_ASSETS = [
-                'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css',
-                'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js',
-                'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
-                'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js',
-                'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css',
-                'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'
-            ];
-
-            self.addEventListener('install', (event) => {
-                event.waitUntil(
-                    caches.open(CACHE_NAME).then((cache) => {
-                        return cache.addAll(MAP_ASSETS);
-                    })
-                );
-            });
-
-            self.addEventListener('fetch', (event) => {
-                event.respondWith(
-                    caches.match(event.request).then((cachedResponse) => {
-                        return cachedResponse || fetch(event.request);
-                    })
-                );
-            });
-        `;
-
-        const swBlob = new Blob([swContent], { type: 'application/javascript' });
-        const swUrl = URL.createObjectURL(swBlob);
-
-        navigator.serviceWorker.register(swUrl).then((registration) => {
-            console.log('Quantum Matrix Service Worker operational scope: ', registration.scope);
-        }).catch((error) => {
-            console.log('Standalone Service Worker operational fallback initialized.');
-        });
-    });
+function hasConsent() {
+    try { return localStorage.getItem('geoquantum_consent') === 'accepted'; } catch (e) { return false; }
 }
 
-// Custom Analytics Logger
 function logTrackingEvent(eventName, params = {}) {
     console.log(`%c[ANALYTICS] %c${eventName}`, "color: #ff00ff; font-weight: bold;", "color: #00ffcc;", params);
+    if (!ANALYTICS_ENABLED) return;        // No real IDs configured yet
+    if (!hasConsent()) return;            // Respect cookie/terms consent
     try {
         if (typeof gtag === 'function') {
             gtag('event', eventName, params);
@@ -253,15 +187,9 @@ function toggleAudio() {
     audioActive = !audioActive;
     const status = document.getElementById('audio-status');
     const ind = document.getElementById('sfx-indicator');
-    if (audioActive) {
-        status.innerText = "ACTIVE";
-        status.className = "text-cyber-cyan";
-        ind.classList.remove('hidden');
-    } else {
-        status.innerText = "DISABLED";
-        status.className = "text-slate-500";
-        ind.classList.add('hidden');
-    }
+    if (status) status.innerText = audioActive ? "ACTIVE" : "DISABLED";
+    if (status) status.className = audioActive ? "text-cyber-cyan" : "text-slate-500";
+    if (ind) ind.classList.toggle('hidden', !audioActive);
     SynthEngine.triggerClick();
     logTrackingEvent('Toggle Audio', { enabled: audioActive });
 }
@@ -269,17 +197,15 @@ function toggleAudio() {
 function toggleOrbitMode(active) {
     SynthEngine.triggerClick();
     orbitActive = active;
-    document.getElementById('toggle-orbit').checked = active;
-    if (active) {
-        showToast("CINEMATIC ORBIT SEQUENCE ACTIVE");
-    } else {
-        showToast("Telemetry Orbit Stopped");
-    }
+    const toggleOrbit = document.getElementById('toggle-orbit');
+    if (toggleOrbit) toggleOrbit.checked = active;
+    showToast(active ? "CINEMATIC ORBIT SEQUENCE ACTIVE" : "Telemetry Orbit Stopped");
     logTrackingEvent('Toggle Orbit Mode', { active });
 }
 
 function dismissHelp() {
-    document.getElementById('help-modal').classList.add('hidden');
+    const helpModal = document.getElementById('help-modal');
+    if (helpModal) helpModal.classList.add('hidden');
     SynthEngine.init();
     SynthEngine.triggerWarp();
     showToast("ENGINE CONNECTED: Initializing UAE Grid Map");
@@ -377,17 +303,20 @@ function toggle3DViewProjection() {
     if (!map) return;
     const currentPitch = map.getPitch();
     const btn = document.getElementById('nav-btn-3d');
+    if (!btn) return;
 
     if (currentPitch > 10) {
         map.easeTo({ pitch: 0, bearing: 0, duration: 1000 });
         btn.classList.remove('text-cyber-pink', 'border-cyber-pink/40', 'shadow-neon-pink');
         btn.classList.add('text-slate-400', 'border-white/10');
-        btn.querySelector('span:last-child').innerText = 'OFF';
+        const span = btn.querySelector('span:last-child');
+        if (span) span.innerText = 'OFF';
     } else {
         map.easeTo({ pitch: 60, bearing: -20, duration: 1000 });
         btn.classList.add('text-cyber-pink', 'border-cyber-pink/40', 'shadow-neon-pink');
         btn.classList.remove('text-slate-400', 'border-white/10');
-        btn.querySelector('span:last-child').innerText = 'ON';
+        const span = btn.querySelector('span:last-child');
+        if (span) span.innerText = 'ON';
     }
 }
 
@@ -499,7 +428,8 @@ function updateModelAnchor(lngLat) {
             scale: merc.meterInMercatorCoordinateUnits()
         };
     }
-    document.getElementById('telemetry-anchor').innerText = `${lngLat[0].toFixed(4)}, ${lngLat[1].toFixed(4)}`;
+    const anchorEl = document.getElementById('telemetry-anchor');
+    if (anchorEl) anchorEl.innerText = `${lngLat[0].toFixed(4)}, ${lngLat[1].toFixed(4)}`;
 }
 updateModelAnchor(anchorLngLat);
 
@@ -541,6 +471,7 @@ async function handleAppInstallation() {
 
 function acceptCookieConsent() {
     SynthEngine.triggerClick();
+    try { localStorage.setItem('geoquantum_consent', 'accepted'); } catch (e) {}
     const banner = document.getElementById('cookie-consent-banner');
     if (banner) {
         banner.classList.add('opacity-0', 'pointer-events-none', 'translate-y-20');
@@ -566,6 +497,19 @@ window.addEventListener('DOMContentLoaded', () => {
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
         badge.classList.remove('hidden');
     }
+
+    // Hide cookie/terms consent banner if the user already accepted
+    let consentGiven = false;
+    try { consentGiven = localStorage.getItem('geoquantum_consent') === 'accepted'; } catch (e) {}
+    if (consentGiven) {
+        const banner = document.getElementById('cookie-consent-banner');
+        if (banner) {
+            banner.classList.add('opacity-0', 'pointer-events-none', 'translate-y-20');
+            banner.classList.remove('opacity-100', 'translate-y-0');
+            setTimeout(() => banner.remove(), 500);
+        }
+    }
+
     runPreloaderStep();
     runChronometerTick();
     setInterval(runChronometerTick, 1000);
@@ -1946,6 +1890,7 @@ function setupFpsCounter() {
     let lastTime = performance.now();
     let frames = 0;
     const fpsLabel = document.getElementById('telemetry-fps');
+    if (!fpsLabel) return;
 
     function tick() {
         const now = performance.now();
@@ -1965,6 +1910,7 @@ let toastTimeout;
 function showToast(text) {
     const el = document.getElementById('toast');
     const txt = document.getElementById('toast-text');
+    if (!el || !txt) return;
     txt.innerText = text;
 
     el.classList.remove('translate-y-20', 'opacity-0');
@@ -1982,14 +1928,11 @@ const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
 const toggleIconArrow = document.getElementById('toggle-icon-arrow');
 let sidebarCollapsed = false;
 
-toggleSidebarBtn.onclick = function () {
-    SynthEngine.triggerClick();
-    sidebarCollapsed = !sidebarCollapsed;
-    if (sidebarCollapsed) {
-        sidePanel.classList.add('-translate-x-full');
-        toggleIconArrow.classList.add('rotate-180');
-    } else {
-        sidePanel.classList.remove('-translate-x-full');
-        toggleIconArrow.classList.remove('rotate-180');
-    }
-};
+if (toggleSidebarBtn) {
+    toggleSidebarBtn.onclick = function () {
+        SynthEngine.triggerClick();
+        sidebarCollapsed = !sidebarCollapsed;
+        if (sidePanel) sidePanel.classList.toggle('-translate-x-full', sidebarCollapsed);
+        if (toggleIconArrow) toggleIconArrow.classList.toggle('rotate-180', sidebarCollapsed);
+    };
+}
