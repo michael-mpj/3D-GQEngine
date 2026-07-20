@@ -1,0 +1,40 @@
+{
+  "name": "3d-geospatial-quantum-engine",
+  "version": "1.90.0-uae",
+  "description": "Immersive 3D Geospatial Engine combining MapLibre GL JS and Three.js with PWA offline support, live weather, and consent-gated analytics.",
+  "author": "Michael Joseph <mj@mikempj.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "serve": "npx serve . -p 8080",
+    "sw:register": "node scripts/register-sw.js",
+    "lint:js": "node --check assets/js/index.js",
+    "validate": "npm run lint:js && npm run validate:html",
+    "validate:html": "node scripts/validate-html.js",
+    "precommit": "npm run validate"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "maplibre",
+    "threejs",
+    "3d-map",
+    "gis",
+    "digital-twin",
+    "pwa",
+    "geospatial",
+    "webgl",
+    "uae",
+    "offline"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikempj/3d-geospatial-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mikempj/3d-geospatial-engine/issues"
+  },
+  "homepage": "https://3dgqengine.mikempj.com"
+}

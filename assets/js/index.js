@@ -70,6 +70,25 @@ function logTrackingEvent(eventName, params = {}) {
     }
 }
 
+// Global error boundary — catches unhandled runtime errors and promise rejections
+window.addEventListener('error', (event) => {
+    console.error('[APP ERROR]', event.message, 'at', event.filename + ':' + event.lineno);
+    showToast('SYSTEM ANOMALY DETECTED — CHECK CONSOLE');
+    logTrackingEvent('Runtime Error', {
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno
+    });
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    console.error('[UNHANDLED REJECTION]', event.reason);
+    showToast('ASYNC FAULT — CHECK CONSOLE');
+    logTrackingEvent('Unhandled Rejection', {
+        reason: event.reason && event.reason.message ? event.reason.message : String(event.reason)
+    });
+});
+
 // FM Synthesizer utilizing browser AudioContext
 const SynthEngine = {
     ctx: null,
