@@ -1,0 +1,168 @@
+{
+  "version": 8,
+  "name": "MPJ GCC Map",
+  "center": [47.6962, 23.773335, 14],
+  "zoom": 14,
+  "bounds": [34.44492, 15.24752, 60.94748, 32.29915],
+  "sources": {
+    "openmaptiles": {
+      "type": "vector",
+      "tiles": ["assets/map/tiles/{z}/{x}/{y}.pbf"],
+      "minzoom": 0,
+      "maxzoom": 14,
+      "bounds": [34.44492, 15.24752, 60.94748, 32.29915]
+    },
+    "pois": {
+      "type": "geojson",
+      "data": "assets/map/points_of_interest.geojson",
+      "cluster": true,
+      "clusterRadius": 50
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#030712"
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "#0f172a"
+      }
+    },
+    {
+      "id": "landuse",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "paint": {
+        "fill-color": "#111827"
+      }
+    },
+    {
+      "id": "landcover",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "paint": {
+        "fill-color": "#0f172a"
+      }
+    },
+    {
+      "id": "park",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "park",
+      "paint": {
+        "fill-color": "#064e3b",
+        "fill-opacity": 0.6
+      }
+    },
+    {
+      "id": "transportation",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "paint": {
+        "line-color": "#1e293b",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [5, 0.5],
+            [14, 3]
+          ]
+        }
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill-extrusion",
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "minzoom": 13,
+      "paint": {
+        "fill-extrusion-color": "#111827",
+        "fill-extrusion-height": [
+          "get",
+          "render_height"
+        ],
+        "fill-extrusion-base": [
+          "get",
+          "render_min_height"
+        ],
+        "fill-extrusion-opacity": 0.8
+      }
+    },
+    {
+      "id": "boundary",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "boundary",
+      "paint": {
+        "line-color": "#00ffcc",
+        "line-width": 2,
+        "line-opacity": 0.4,
+        "line-dasharray": [2, 4]
+      }
+    },
+    {
+      "id": "poi-cluster",
+      "type": "circle",
+      "source": "pois",
+      "filter": [
+        "has",
+        "point_count"
+      ],
+      "paint": {
+        "circle-color": "#00ffcc",
+        "circle-radius": 20,
+        "circle-opacity": 0.3
+      }
+    },
+    {
+      "id": "poi-cluster-count",
+      "type": "symbol",
+      "source": "pois",
+      "filter": [
+        "has",
+        "point_count"
+      ],
+      "layout": {
+        "text-field": "{point_count_abbreviated}",
+        "text-font": [
+          "Open Sans Bold"
+        ],
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#ffffff"
+      }
+    },
+    {
+      "id": "poi-unclustered-point",
+      "type": "circle",
+      "source": "pois",
+      "filter": [
+        "!",
+        [
+          "has",
+          "point_count"
+        ]
+      ],
+      "paint": {
+        "circle-color": "#ff00ff",
+        "circle-radius": 8,
+        "circle-stroke-width": 2,
+        "circle-stroke-color": "#ffffff"
+      }
+    }
+  ],
+  "sprite": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/sprite",
+  "glyphs": "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf"
+}
