@@ -1,32 +1,33 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# yaml-language-server: disable-secrets-warning
 name: Deploy to Vercel
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
-
-permissions:
-  contents: read
+  push:
+    branches: [main]
 
 jobs:
   deploy:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
+          cache: npm
           node-version: 20
-          cache: 'npm'
 
       - run: npm ci || npm install
       - run: npm run validate
 
       - uses: amondnet/vercel-action@v25
+        if: github.ref == 'refs/heads/main'
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: '--prod'
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
-        if: github.ref == 'refs/heads/main'
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}

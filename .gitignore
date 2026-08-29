@@ -144,8 +144,12 @@ vite.config.ts.timestamp-*
 
 # Local backup / legacy files (do not commit)
 index-bakup.html
+index-backup.html
 *.backup
 *.bak
+
+# Data files (sector data is hardcoded in index.js)
+assets/data/
 
 # Environment / secrets
 .env

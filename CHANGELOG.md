@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 - **Custom cursor**: Initial off-screen position (`-100,-100`) caused the cursor to be invisible until first mouse move. Now centered on the viewport on load and slightly enlarged (dot `6px → 8px`, ring `30px → 36px`) for visibility. Animation loop wrapped in `try/catch` so unrelated JS errors cannot stop it.
 - **Location / sector animations not showing**: The three core library files were missing their `.js` extension (`three.min`, `GLTFLoader`, `fancybox.umd`) so the browser failed to load `THREE`, `GLTFLoader`, and `Fancybox` — which broke all 3D entity spawning and sector presets. Renamed to `three.min.js`, `GLTFLoader.js`, `fancybox.umd.js`.
-- **Privacy & Terms links**: Converted the dead `<span>` placeholders in the consent banner into real anchors (`#privacy`, `#terms`) pointing at `privacy.html` / `terms.html`.
+- **Privacy & Terms links**: Converted the dead `<span>` placeholders in the consent banner into real links (`privacy/`, `terms/`) pointing at the clean-URL policy pages.
 - **Cookie/terms consent re-prompt**: Accepted consent is now persisted in `localStorage` (`geoquantum_consent`) and the banner is suppressed on return visits.
 
 ### Added
