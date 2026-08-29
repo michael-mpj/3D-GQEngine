@@ -1,0 +1,69 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome (localhost:8080)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Start Local Server (python3 http.server 8080)",
+      "runtimeArgs": [
+        "--auto-open-devtools-for-tabs",
+        "--disable-web-security",
+        "--allow-file-access-from-files"
+      ],
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///*": "${webRoot}/*"
+      }
+    },
+    {
+      "name": "Launch Edge (localhost:8080)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Start Local Server (python3 http.server 8080)",
+      "runtimeArgs": [
+        "--auto-open-devtools-for-tabs"
+      ]
+    },
+    {
+      "name": "Launch Chrome (localhost:8099)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8099",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Start Local Server (python3 http.server 8099)"
+    },
+    {
+      "name": "Launch index.html (direct file)",
+      "type": "chrome",
+      "request": "launch",
+      "file": "${workspaceFolder}/index.html",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Debug Service Worker",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}",
+      "urlFilter": "http://localhost:*"
+    },
+    {
+      "name": "Attach to Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug App + Service Worker",
+      "configurations": ["Launch Chrome (localhost:8080)", "Debug Service Worker"]
+    }
+  ]
+}
