@@ -1,0 +1,137 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Local Server (python3 http.server 8080)",
+      "type": "shell",
+      "command": "python3",
+      "args": ["-m", "http.server", "8080"],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Serving HTTP on",
+          "endsPattern": "Serving HTTP on"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "build"
+      }
+    },
+    {
+      "label": "Start Local Server (python3 http.server 8099)",
+      "type": "shell",
+      "command": "python3",
+      "args": ["-m", "http.server", "8099"],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Serving HTTP on",
+          "endsPattern": "Serving HTTP on"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "build"
+      }
+    },
+    {
+      "label": "Compile Tailwind CSS",
+      "type": "shell",
+      "command": "npx",
+      "args": ["tailwindcss", "-i", "./src/css/input.css", "-o", "./assets/css/index.css", "--minify"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Watch Tailwind CSS",
+      "type": "shell",
+      "command": "npx",
+      "args": ["tailwindcss", "-i", "./src/css/input.css", "-o", "./assets/css/index.css", "--watch"],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "tailwind",
+        "fileLocation": "absolute",
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "watching for file changes",
+          "endsPattern": "Done in"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "build"
+      }
+    },
+    {
+      "label": "Validate JS",
+      "type": "shell",
+      "command": "node",
+      "args": ["--check", "assets/js/index.js"],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Run All Validation",
+      "dependsOn": ["Validate JS"],
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Stop All Servers",
+      "type": "shell",
+      "command": "pkill",
+      "args": ["-f", "http.server"],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "hidden"
+      }
+    }
+  ]
+}

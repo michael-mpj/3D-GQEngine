@@ -70,30 +70,6 @@
         }
     </script>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cyber: {
-                            cyan: '#00ffcc',
-                            pink: '#ff00ff',
-                            purple: '#8b5cf6',
-                            amber: '#ffaa00',
-                            dark: '#030712'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-
     <!-- Maplibre GL JS Stylesheet -->
     <link href="assets/css/maplibre-gl.css" rel="stylesheet" />
 
@@ -531,7 +507,7 @@
                     <div class="flex items-center justify-between p-2 bg-white/5 rounded border border-white/5">
                         <span class="text-slate-300">ACTIVATE REAL 3D TERRAIN (DEM)</span>
                         <label class="relative inline-flex items-center cursor-pointer">
-                            <input id="toggle-terrain" type="checkbox" checked onchange="toggleTerrain(this.checked)"
+                            <input id="toggle-terrain" type="checkbox" onchange="toggleTerrain(this.checked)"
                                 class="sr-only peer">
                             <div
                                 class="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-cyber-cyan/30 peer-checked:after:bg-cyber-cyan">
@@ -672,8 +648,8 @@
         </div>
         <p class="text-[10px] text-slate-300 leading-relaxed font-sans normal-case">
             By entering this geospatial matrix, you accept our <a
-                href="#terms" class="text-cyber-cyan underline cursor-pointer hover:text-cyber-cyan/80">Terms of Service</a> &amp;
-            <a href="#privacy" class="text-cyber-cyan underline cursor-pointer hover:text-cyber-cyan/80">Privacy Policy</a>. We
+                href="terms/" class="text-cyber-cyan underline cursor-pointer hover:text-cyber-cyan/80">Terms of Service</a> &amp;
+            <a href="privacy/" class="text-cyber-cyan underline cursor-pointer hover:text-cyber-cyan/80">Privacy Policy</a>. We
             utilize telemetry cookies to calibrate standard spatial simulations.
         </p>
         <div class="flex gap-2">
