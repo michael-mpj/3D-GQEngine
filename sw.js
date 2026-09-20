@@ -25,8 +25,8 @@ const LOCAL_ASSETS = [
     "./",
     "./index.html",
     "./manifest.json",
-    "./privacy.html",
-    "./terms.html",
+    "./privacy/",
+    "./terms/",
     "assets/css/index.css",
     "assets/css/maplibre-gl.css",
     "assets/css/fancybox.css",
@@ -86,6 +86,21 @@ self.addEventListener("fetch", (event) => {
     if (req.method !== "GET") return;
 
     const url = new URL(req.url);
+
+    // Clean URLs: /privacy -> /privacy/, /terms -> /terms/
+    if (url.origin === self.location.origin) {
+        const cleanRewrite = (path) => {
+            if (path === '/privacy' || path === '/terms') {
+                return path + '/';
+            }
+            return null;
+        };
+        const rewritten = cleanRewrite(url.pathname);
+        if (rewritten) {
+            url.pathname = rewritten;
+            req = new Request(url, req);
+        }
+    }
 
     // Never cache Google analytics / tag manager beacons
     if (url.hostname.includes("googletagmanager.com") ||

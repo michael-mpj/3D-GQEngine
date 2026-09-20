@@ -8,6 +8,8 @@
     "start": "python3 -m http.server 8080",
     "serve": "npx serve . -p 8080",
     "sw:register": "node scripts/register-sw.js",
+    "css:build": "tailwindcss -i ./src/css/input.css -o ./assets/css/index.css --minify",
+    "css:watch": "tailwindcss -i ./src/css/input.css -o ./assets/css/index.css --watch",
     "lint:js": "node --check assets/js/index.js",
     "validate": "npm run lint:js && npm run validate:html",
     "validate:html": "node scripts/validate-html.js",
@@ -36,5 +38,9 @@
   "bugs": {
     "url": "https://github.com/mikempj/3d-geospatial-engine/issues"
   },
-  "homepage": "https://3dgqengine.mikempj.com"
+  "homepage": "https://3dgqengine.mikempj.com",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
 }

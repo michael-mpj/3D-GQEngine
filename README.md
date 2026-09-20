@@ -148,8 +148,8 @@ Each preset spawns its 3D entities and shows category-filtered POI markers.
 ├── index-bakup.html       # Reference snapshot (do not edit)
 ├── manifest.json           # PWA manifest
 ├── sw.js                  # Service worker (offline + versioned cache)
-├── privacy.html           # Privacy policy
-├── terms.html             # Terms of service
+├── privacy/           # Privacy policy
+├── terms/             # Terms of service
 ├── robots.txt
 ├── sitemap.xml
 ├── README.md

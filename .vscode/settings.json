@@ -1,0 +1,46 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "exclude"
+  },
+  "html.format.wrapLineLength": 120,
+  "html.format.indentInnerHtml": true,
+  "css.validate": true,
+  "javascript.validate": {
+    "enable": true
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "files.exclude": {
+    "node_modules": true,
+    ".git": true,
+    "dist": true,
+    "build": true,
+    "*.log": true,
+    ".DS_Store": true
+  },
+  "files.watcherExclude": {
+    "node_modules/**": true,
+    ".git/**": true,
+    "dist/**": true,
+    "build/**": true
+  },
+  "search.exclude": {
+    "node_modules": true,
+    ".git": true,
+    "dist": true,
+    "build": true,
+    "*.min.js": true,
+    "*.min.css": true
+  },
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "bash"
+}
