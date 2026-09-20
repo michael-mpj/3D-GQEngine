@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NKQ8C9HH');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8RF39YJC5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-V8RF39YJC5');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3D Geospatial Quantum Engine | Interactive 3D GIS &amp; Digital Twin Platform</title>
+    <meta name="description"
+        content="3D Geospatial Quantum Engine is an advanced geospatial visualization platform for interactive maps, digital twins, 3D GIS, AI-powered analytics, and real-time spatial data.">
+    <meta name="keywords"
+        content="3D Maps, GIS, Geospatial, MapLibre, Three.js, Digital Twin, Interactive Maps, Smart City, Quantum Engine, Mapping Platform">
+    <meta name="author" content="3D Geospatial Quantum Engine">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#020617">
+    <meta name="application-name" content="3D Geospatial Quantum Engine">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="3D Geospatial Quantum Engine">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://3dgqengine.mikempj.com/">
+    <link rel="icon" href="assets/icons/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="3D Geospatial Quantum Engine">
+    <meta property="og:description"
+        content="Interactive 3D GIS, Digital Twins, Smart City Mapping and Geospatial Visualization Platform.">
+    <meta property="og:url" content="https://3dgqengine.mikempj.com/">
+    <meta property="og:image" content="https://3dgqengine.mikempj.com/assets/screenshots/desktop.png">
+    <meta property="og:site_name" content="3D Geospatial Quantum Engine">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3D Geospatial Quantum Engine">
+    <meta name="twitter:description" content="Interactive 3D GIS and Digital Twin Platform">
+    <meta name="twitter:image" content="https://3dgqengine.mikempj.com/assets/screenshots/desktop.png">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "3D Geospatial Quantum Engine",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "url": "https://3dgqengine.mikempj.com",
+          "description": "Interactive 3D Geospatial Visualization Platform.",
+          "creator": {
+            "@type": "Organization",
+            "name": "3D Geospatial Quantum Engine"
+          }
+        }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            cyan: '#00ffcc',
+                            pink: '#ff00ff',
+                            purple: '#8b5cf6',
+                            amber: '#ffaa00',
+                            dark: '#030712'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Maplibre GL JS Stylesheet -->
+    <link href="assets/css/maplibre-gl.css" rel="stylesheet" />
+
+    <!-- Google Fonts & Lucide Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Fancybox 5 CSS from CDN -->
+    <link rel="stylesheet" href="assets/css/fancybox.css" />
+
+    <!-- PWA Settings -->
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body class="h-full w-full select-none">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKQ8C9HH" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Custom Cursor Nodes -->
+    <div id="custom-cursor-dot"></div>
+    <div id="custom-cursor-ring"></div>
+
+    <!-- Cinematic Boot Loader Preloader -->
+    <div id="preloader-overlay"
+        class="fixed inset-0 bg-slate-950 z-[100] flex flex-col items-center justify-center p-6 transition-all duration-1000 ease-in-out scanline">
+        <div class="cyber-grid-overlay absolute inset-0"></div>
+
+        <div class="relative z-10 max-w-lg w-full flex flex-col items-center">
+            <!-- Rotating Reactor Core -->
+            <div class="relative w-32 h-32 mb-8 flex items-center justify-center">
+                <svg class="absolute w-full h-full animate-spin text-cyber-cyan/30" style="animation-duration: 20s"
+                    viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-dasharray="10 20" />
+                </svg>
+                <svg class="absolute w-5/6 h-5/6 animate-spin text-cyber-pink/40"
+                    style="animation-duration: 10s; animation-direction: reverse;" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1"
+                        stroke-dasharray="25 15" />
+                </svg>
+                <div
+                    class="preloader-reactor-ring absolute w-2/3 h-2/3 rounded-full border border-cyber-cyan/60 flex items-center justify-center bg-cyber-cyan/5">
+                    <div class="w-6 h-6 rounded-full bg-cyber-cyan shadow-neon-cyan animate-pulse"></div>
+                </div>
+            </div>
+
+            <!-- Terminal Identification -->
+            <div class="text-center mb-6">
+                <h2 class="text-white text-base font-bold tracking-[0.3em] font-mono uppercase mb-1">GEO-SPATIAL QUANTUM
+                    MATRIX</h2>
+                <div
+                    class="text-[9px] text-cyber-cyan font-mono bg-cyber-cyan/10 px-2.5 py-0.5 rounded border border-cyber-cyan/20 inline-block">
+                    UAE FEDERATION EXPANSION</div>
+            </div>
+
+            <!-- Calibration Feed Logs -->
+            <div
+                class="w-full bg-slate-950/80 border border-white/5 rounded-lg p-3 h-28 mb-4 overflow-hidden font-mono text-[10px] text-slate-400 space-y-1 select-none">
+                <div class="text-cyber-cyan flex justify-between">
+                    <span>GRID COORDINATE SCAN</span>
+                    <span>ACTIVE</span>
+                </div>
+                <div id="preloader-log-container" class="space-y-0.5 max-h-20 overflow-hidden">
+                    <div class="text-slate-500">&gt; Securing spatial link vectors...</div>
+                </div>
+            </div>
+
+            <!-- Preloader Progress line -->
+            <div class="w-full h-1 bg-slate-900 border border-white/5 rounded-full overflow-hidden mb-8 relative">
+                <div id="preloader-progress-bar"
+                    class="h-full bg-gradient-to-r from-cyber-cyan to-cyber-purple w-0 transition-all duration-300 shadow-neon-cyan">
+                </div>
+            </div>
+
+            <!-- Core Unlock Engage Button -->
+            <button id="preloader-action-btn" onclick="engageCoreMatrix()"
+                class="w-full py-3.5 bg-cyber-cyan/10 hover:bg-cyber-cyan border border-cyber-cyan/40 hover:text-slate-950 hover:shadow-neon-cyan text-cyber-cyan text-xs font-bold font-mono tracking-[0.2em] rounded-xl transition-all duration-500 opacity-0 transform translate-y-4 pointer-events-none uppercase">
+                ENGAGE QUANTUM MATRIX
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Navigation Telemetry Header -->
+    <header
+        class="absolute top-0 left-0 right-0 z-10 glass-panel border-b border-white/5 px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3 shrink-0">
+            <div class="h-3 w-3 bg-cyber-cyan rounded-full pulse-dot"></div>
+            <h1
+                class="text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-white font-mono flex items-center gap-2">
+                Geo-Spatial UAE Matrix <span
+                    class="text-cyber-cyan text-[10px] bg-cyber-cyan/10 px-2 py-0.5 rounded border border-cyber-cyan/30">V1.90-UAE</span>
+            </h1>
+        </div>
+
+        <!-- Integrated Nominatim Search with debounced autocomplete -->
+        <div class="relative w-72 md:w-96 mx-4">
+            <div
+                class="flex items-center bg-slate-950/80 border border-white/10 rounded-lg px-3 py-1.5 focus-within:border-cyber-cyan transition-colors">
+                <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input id="search-location-input" type="text" placeholder="Warp to coordinate (e.g. Dubai Marina)"
+                    class="w-full bg-transparent border-none text-xs text-white focus:outline-none ml-2 font-mono">
+                <button id="search-clear-btn" onclick="clearLocationSearch()"
+                    class="hidden text-slate-500 hover:text-cyber-pink font-mono text-[10px] uppercase shrink-0">Clear</button>
+            </div>
+            <!-- Search Results Suggestions Dropdown overlay -->
+            <div id="autocomplete-results"
+                class="absolute top-11 left-0 right-0 max-h-56 overflow-y-auto bg-slate-950/95 border border-white/10 rounded-lg shadow-2xl z-20 hidden text-xs font-mono">
+                <!-- Injected elements -->
+            </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-6 font-mono text-[11px] text-slate-400 shrink-0">
+            <button id="pwa-install-btn"
+                class="hidden items-center gap-1.5 px-2.5 py-1 bg-cyber-cyan/10 text-cyber-cyan hover:bg-cyber-cyan hover:text-slate-950 border border-cyber-cyan/30 rounded font-mono transition-all text-[10px] uppercase font-bold">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Install App
+            </button>
+            <div id="pwa-mode-badge"
+                class="hidden px-2 py-0.5 bg-cyber-purple/20 text-cyber-purple border border-cyber-purple/30 rounded text-[9px] tracking-wider uppercase font-bold">
+                Standalone PWA</div>
+            <div>LATENCY: <span id="telemetry-latency" class="text-cyber-cyan">12ms</span></div>
+            <div>FPS: <span id="telemetry-fps" class="text-cyber-cyan">--</span></div>
+            <div>MESHES: <span id="telemetry-meshes" class="text-cyber-pink">0</span></div>
+            <div>ANCHOR: <span id="telemetry-anchor" class="text-slate-200">Initializing...</span></div>
+        </div>
+    </header>
+
+    <!-- Center-Right Customized Viewport Navigation Panels (Zoom In, Zoom Out, 3D Pitch Switch) -->
+    <div class="absolute right-6 top-1/2 transform -translate-y-1/2 z-10 flex flex-col gap-2 font-mono">
+        <button onclick="handleCustomZoom('in')"
+            class="w-10 h-10 glass-panel hover:bg-cyber-cyan hover:text-slate-950 border border-cyber-cyan/40 text-cyber-cyan rounded-xl flex items-center justify-center text-lg font-bold shadow-neon-cyan transition-all"
+            title="Zoom In">
+            ＋
+        </button>
+        <button onclick="handleCustomZoom('out')"
+            class="w-10 h-10 glass-panel hover:bg-cyber-cyan hover:text-slate-950 border border-cyber-cyan/40 text-cyber-cyan rounded-xl flex items-center justify-center text-lg font-bold shadow-neon-cyan transition-all"
+            title="Zoom Out">
+            －
+        </button>
+        <button id="nav-btn-3d" onclick="toggle3DViewProjection()"
+            class="w-10 h-10 glass-panel hover:bg-cyber-pink hover:text-slate-950 border border-cyber-pink/40 text-cyber-pink rounded-xl flex flex-col items-center justify-center text-[10px] font-bold shadow-neon-pink transition-all"
+            title="Toggle 2D/3D View">
+            <span>3D</span>
+            <span class="text-[8px] opacity-75">ON</span>
+        </button>
+    </div>
+
+    <!-- Floating Chrono & Weather Panel -->
+    <div
+        class="absolute top-16 right-6 z-10 glass-panel border border-white/5 p-4 rounded-xl flex flex-col gap-2.5 font-mono text-[11px] w-64 shadow-neon-cyan select-none transition-all duration-300">
+        <div class="flex justify-between items-center border-b border-white/10 pb-1.5">
+            <span class="text-cyber-cyan font-bold tracking-wider">CHRONO-TELEMETRY</span>
+            <span class="text-[9px] text-slate-500 uppercase">Live Metrics</span>
+        </div>
+        <div class="flex items-baseline justify-between">
+            <span class="text-slate-400">SYSTEM TIME:</span>
+            <span id="live-time" class="text-white font-bold text-sm tracking-wider">00:00:00</span>
+        </div>
+        <div class="flex items-center justify-between">
+            <span class="text-slate-400">DATE VECTOR:</span>
+            <span id="live-date" class="text-slate-300">0000-00-00</span>
+        </div>
+
+        <div class="border-t border-white/10 pt-2.5">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-cyber-pink font-bold tracking-wider">ATMOSPHERE CORE</span>
+                <span class="text-[9px] text-slate-500">OPEN-METEO SYNC</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div id="weather-icon-container"
+                    class="w-10 h-10 flex items-center justify-center bg-slate-900/60 border border-white/10 rounded-lg shadow-inner">
+                    <svg class="w-6 h-6 text-slate-500 animate-pulse" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div id="weather-desc" class="text-white font-bold uppercase text-[10px] tracking-wide truncate">
+                        RETRIEVING FEED...</div>
+                    <div class="flex justify-between text-[9px] text-slate-400 mt-0.5">
+                        <span>TEMP: <strong id="weather-temp" class="text-cyber-cyan">--°C</strong></span>
+                        <span>WIND: <strong id="weather-wind" class="text-cyber-cyan">--km/h</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side Control Panel Container -->
+    <aside id="side-panel"
+        class="absolute top-16 left-0 bottom-0 z-10 w-96 max-w-[calc(100vw-1rem)] flex flex-col glass-panel border-r border-white/5 transition-transform duration-300 ease-in-out transform shadow-2xl">
+
+        <!-- Toggle button inside sidepanel -->
+        <button id="toggle-sidebar-btn"
+            class="absolute -right-10 top-4 h-10 w-10 glass-panel hover:bg-slate-900 border-l-0 rounded-r-md flex items-center justify-center text-cyber-cyan transition-colors"
+            title="Toggle Dashboard">
+            <svg id="toggle-icon-arrow" class="w-4 h-4 transition-transform duration-300" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <div class="flex-1 overflow-y-auto p-5 space-y-6">
+
+            <!-- 1. UAE CINEMATIC SECTORS / PRESETS -->
+            <section class="space-y-3">
+                <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono tracking-wider text-slate-400 uppercase">Sector Coordinates
+                        (Presets)</span>
+                    <span class="text-[10px] text-cyber-cyan font-mono">01 // CINEMATIC</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <button onclick="flyToSector('dubai')"
+                        class="px-3 py-2 bg-white/5 hover:bg-cyber-cyan/15 hover:border-cyber-cyan border border-white/10 rounded transition text-left flex flex-col justify-between group">
+                        <span class="font-bold text-white group-hover:text-cyber-cyan transition-colors">Dubai</span>
+                        <span class="text-[9px] text-slate-400 font-mono">Sector Preset</span>
+                    </button>
+                    <button onclick="flyToSector('abudhabi')"
+                        class="px-3 py-2 bg-white/5 hover:bg-cyber-cyan/15 hover:border-cyber-cyan border border-white/10 rounded transition text-left flex flex-col justify-between group">
+                        <span class="font-bold text-white group-hover:text-cyber-cyan transition-colors">AbuDhabi</span>
+                        <span class="text-[9px] text-slate-400 font-mono">Sector Preset</span>
+                    </button>
+                    <button onclick="flyToSector('sharjah')"
+                        class="px-3 py-2 bg-white/5 hover:bg-cyber-cyan/15 hover:border-cyber-cyan border border-white/10 rounded transition text-left flex flex-col justify-between group">
+                        <span class="font-bold text-white group-hover:text-cyber-cyan transition-colors">Sharaja</span>
+                        <span class="text-[9px] text-slate-400 font-mono">Sector Preset</span>
+                    </button>
+                    <button onclick="flyToSector('rasalkhaimah')"
+                        class="px-3 py-2 bg-white/5 hover:bg-cyber-cyan/15 hover:border-cyber-cyan border border-white/10 rounded transition text-left flex flex-col justify-between group">
+                        <span class="font-bold text-white group-hover:text-cyber-cyan transition-colors">Ras
+                            alkhaima</span>
+                        <span class="text-[9px] text-slate-400 font-mono">Sector Preset</span>
+                    </button>
+                </div>
+                <!-- 3D Elevation Preset (UAE Mountain Peak Jebel Jais) -->
+                <button onclick="flyToSector('jebeljais')"
+                    class="w-full px-3 py-2 bg-white/5 hover:bg-cyber-cyan/15 hover:border-cyber-cyan border border-white/10 rounded transition text-left flex justify-between items-center group">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white group-hover:text-cyber-cyan transition-colors text-xs">United
+                            Arab Emirates</span>
+                        <span class="text-[9px] text-slate-400 font-mono">National Preset</span>
+                    </div>
+                    <span
+                        class="text-cyber-cyan border border-cyber-cyan/20 px-1.5 py-0.5 rounded text-[8px] tracking-widest font-mono">3D
+                        TERRAIN</span>
+                </button>
+            </section>
+
+            <!-- 2. QUANTUM DEPLOYMENT TOOLBOX -->
+            <section class="space-y-4">
+                <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono tracking-wider text-slate-400 uppercase">3D Entity Deployer</span>
+                    <span class="text-[10px] text-cyber-cyan font-mono">02 // DEPLOY</span>
+                </div>
+
+                <div class="bg-cyber-cyan/5 p-2.5 rounded border border-cyber-cyan/20 space-y-2">
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        <strong class="text-cyber-cyan">Instruction:</strong> Configure metadata, choose an entity
+                        below, then <span class="underline">double-click anywhere</span> on the map grid to materialize.
+                        Sequentially deployed nodes are automatically connected with <span class="text-cyber-pink">3D
+                            data links</span>!
+                    </p>
+                    <button onclick="deployAtUserGPS()"
+                        class="w-full py-1.5 bg-cyber-pink/15 hover:bg-cyber-pink hover:text-slate-950 border border-cyber-pink/40 text-cyber-pink text-[10px] font-bold font-mono tracking-wider rounded-lg transition-all duration-300 flex items-center justify-center gap-1.5 uppercase">
+                        <span>📍 Deploy Beacon At My Live GPS</span>
+                    </button>
+                </div>
+
+                <!-- Entity Creator Metadata Fields -->
+                <div class="p-3 bg-slate-900/80 border border-white/5 rounded-lg space-y-2.5 font-mono text-[11px]">
+                    <div class="text-[10px] text-cyber-cyan font-bold tracking-wider">ENTITY METADATA SETUP</div>
+                    <div>
+                        <label class="text-slate-400 block mb-1">LABEL/TITLE</label>
+                        <input id="input-entity-title" type="text" placeholder="e.g. Core Network Node"
+                            class="w-full bg-slate-950 border border-white/15 px-2.5 py-1.5 rounded focus:outline-none focus:border-cyber-cyan text-xs text-white">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="text-slate-400 block mb-1">CATEGORY</label>
+                            <select id="select-entity-category"
+                                class="w-full bg-slate-950 border border-white/15 px-2.5 py-1.5 rounded focus:outline-none focus:border-cyber-cyan text-xs text-white">
+                                <option value="Energy">Energy</option>
+                                <option value="Infrastructure" selected>Infrastructure</option>
+                                <option value="Defense">Defense</option>
+                                <option value="Research">Research</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-slate-400 block mb-1">PRESET ID</label>
+                            <input id="input-entity-id" type="text" placeholder="Auto-generated" disabled
+                                class="w-full bg-slate-950/60 border border-white/5 px-2.5 py-1.5 rounded text-xs text-slate-500 font-mono">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-slate-400 block mb-1">DESCRIPTION</label>
+                        <textarea id="input-entity-desc" placeholder="Operational status details..." rows="2"
+                            class="w-full bg-slate-950 border border-white/15 px-2.5 py-1.5 rounded focus:outline-none focus:border-cyber-cyan text-xs text-white resize-none"></textarea>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <!-- Entity Selector Cards -->
+                    <div id="deploy-tower" onclick="selectDeployType('cyber-tower')"
+                        class="p-3 bg-cyber-cyan/10 border-2 border-cyber-cyan rounded-lg cursor-pointer transition flex items-center justify-between group">
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Cyber Neon Beacon</h4>
+                            <p class="text-[10px] text-slate-400">Glass frame tower emitting sky lasers</p>
+                        </div>
+                        <span class="text-cyber-cyan">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div id="deploy-crystal" onclick="selectDeployType('holo-crystal')"
+                        class="p-3 bg-white/5 border border-white/10 rounded-lg cursor-pointer hover:bg-white/10 transition flex items-center justify-between group">
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Quantum Crystal</h4>
+                            <p class="text-[10px] text-slate-400">Orbiting neon wireframe crystal</p>
+                        </div>
+                        <span class="text-slate-400 group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div id="deploy-ring" onclick="selectDeployType('orbital-ring')"
+                        class="p-3 bg-white/5 border border-white/10 rounded-lg cursor-pointer hover:bg-white/10 transition flex items-center justify-between group">
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Hyper Orbital Ring</h4>
+                            <p class="text-[10px] text-slate-400">Rotating spatial field rings</p>
+                        </div>
+                        <span class="text-slate-400 group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <!-- Custom GLB Loader Card -->
+                    <div id="deploy-glb" onclick="selectDeployType('custom-glb')"
+                        class="p-3 bg-white/5 border border-white/10 rounded-lg cursor-pointer hover:bg-white/10 transition flex flex-col gap-2 group">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Custom GLB 3D Model</h4>
+                                <p class="text-[10px] text-slate-400">Instantiate an external GLB/gLTF mesh link</p>
+                            </div>
+                            <span class="text-slate-400 group-hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="space-y-1.5 text-[10px] font-mono mt-1 hidden group-active:block focus-within:block"
+                            id="glb-input-container">
+                            <label class="text-cyber-cyan block uppercase">GLB RESOURCE URL</label>
+                            <input id="input-glb-url" type="text"
+                                value="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxVertexColors/glTF-Binary/BoxVertexColors.glb"
+                                class="w-full bg-slate-950 border border-cyber-cyan/30 px-2 py-1 rounded text-white focus:outline-none focus:border-cyber-cyan"
+                                placeholder="https://cdn.example/model.glb">
+                            <div class="text-[8px] text-slate-500">Must support CORS requests. Default sample loaded.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entity Configuration Options -->
+                <div class="p-3 bg-slate-900/50 border border-white/5 rounded-lg space-y-3 font-mono text-[11px]">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-slate-400">DEPLOY SCALE</span>
+                            <span id="label-entity-scale" class="text-cyber-cyan">1.0x</span>
+                        </div>
+                        <input id="slider-entity-scale" type="range" min="0.5" max="5.0" step="0.1" value="1.0"
+                            class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyber-cyan">
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-slate-400">BASE ALTITUDE (ELEVATION)</span>
+                            <span id="label-entity-altitude" class="text-cyber-cyan">0m</span>
+                        </div>
+                        <input id="slider-entity-altitude" type="range" min="-50" max="800" step="10" value="0"
+                            class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyber-cyan">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. WEBGL ENVIRO-SIMULATION -->
+            <section class="space-y-3">
+                <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono tracking-wider text-slate-400 uppercase">Atmosphere Engine</span>
+                    <span class="text-[10px] text-cyber-cyan font-mono">03 // FIELD</span>
+                </div>
+
+                <div class="space-y-3 font-mono text-[11px]">
+                    <!-- Particle Weather Select -->
+                    <div>
+                        <label class="text-slate-400 block mb-1.5 uppercase">Quantum Particle Systems</label>
+                        <select id="weather-select" onchange="changeWeather(this.value)"
+                            class="w-full bg-slate-900 border border-white/15 px-3 py-2 rounded focus:outline-none focus:border-cyber-cyan text-xs text-white">
+                            <option value="none">No Particles Active</option>
+                            <option value="cyan-sparks" selected>Cyber Neon Sparks (Radial Flow)</option>
+                            <option value="golden-rain">Solar Rain (Downward Accel)</option>
+                            <option value="blizzard">Quantum Blizzard (Sideways Drift)</option>
+                        </select>
+                    </div>
+
+                    <!-- Ambient Map Styles -->
+                    <div>
+                        <label class="text-slate-400 block mb-1.5 uppercase">Geo-Vector Layer Style</label>
+                        <select id="style-select" onchange="changeMapStyle(this.value)"
+                            class="w-full bg-slate-900 border border-white/15 px-3 py-2 rounded focus:outline-none focus:border-cyber-cyan text-xs text-white">
+                            <option value="dark">CartoDB Dark Matter (Recommended)</option>
+                            <option value="light">CartoDB Positron (High Contrast)</option>
+                            <option value="voyager">CartoDB Voyager (Hydrological Detail)</option>
+                        </select>
+                    </div>
+
+                    <!-- Terrain 3D Toggle -->
+                    <div class="flex items-center justify-between p-2 bg-white/5 rounded border border-white/5">
+                        <span class="text-slate-300">ACTIVATE REAL 3D TERRAIN (DEM)</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="toggle-terrain" type="checkbox" checked onchange="toggleTerrain(this.checked)"
+                                class="sr-only peer">
+                            <div
+                                class="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-cyber-cyan/30 peer-checked:after:bg-cyber-cyan">
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- 3D extruded map buildings toggle -->
+                    <div class="flex items-center justify-between p-2 bg-white/5 rounded border border-white/5">
+                        <span class="text-slate-300">ADD EXTRUDED CITY BUILDINGS</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="toggle-buildings" type="checkbox" checked
+                                onchange="toggleBuildings(this.checked)" class="sr-only peer">
+                            <div
+                                class="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-cyber-cyan/30 peer-checked:after:bg-cyber-cyan">
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Cinematic Orbit Mode Switch -->
+                    <div
+                        class="flex items-center justify-between p-2 bg-cyber-cyan/5 rounded border border-cyber-cyan/20">
+                        <span class="text-cyber-cyan font-bold tracking-wide">CINEMATIC TELEMETRY SWEEP</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="toggle-orbit" type="checkbox" onchange="toggleOrbitMode(this.checked)"
+                                class="sr-only peer">
+                            <div
+                                class="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-cyber-cyan/30 peer-checked:after:bg-cyber-cyan animate-pulse">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. POINTS OF INTEREST FILTER LAYER TOGGLES -->
+            <section class="space-y-3">
+                <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono tracking-wider text-slate-400 uppercase">Interactive POI
+                        Layers</span>
+                    <span class="text-[10px] text-cyber-cyan font-mono">04 // FILTER</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
+                    <label
+                        class="flex items-center gap-2 p-2 bg-slate-900/60 border border-white/5 rounded hover:bg-slate-900 transition-colors">
+                        <input type="checkbox" id="poi-filter-attractions" checked
+                            onchange="togglePoiLayer('Attractions', this.checked)" class="accent-cyber-pink">
+                        <span class="text-slate-300">Attractions</span>
+                    </label>
+                    <label
+                        class="flex items-center gap-2 p-2 bg-slate-900/60 border border-white/5 rounded hover:bg-slate-900 transition-colors">
+                        <input type="checkbox" id="poi-filter-shopping" checked
+                            onchange="togglePoiLayer('Shopping', this.checked)" class="accent-cyber-cyan">
+                        <span class="text-slate-300">Shopping</span>
+                    </label>
+                    <label
+                        class="flex items-center gap-2 p-2 bg-slate-900/60 border border-white/5 rounded hover:bg-slate-900 transition-colors">
+                        <input type="checkbox" id="poi-filter-transit" checked
+                            onchange="togglePoiLayer('Transit', this.checked)" class="accent-cyber-purple">
+                        <span class="text-slate-300">Transit</span>
+                    </label>
+                    <label
+                        class="flex items-center gap-2 p-2 bg-slate-900/60 border border-white/5 rounded hover:bg-slate-900 transition-colors">
+                        <input type="checkbox" id="poi-filter-general" checked
+                            onchange="togglePoiLayer('POI', this.checked)" class="accent-cyber-amber">
+                        <span class="text-slate-300">General POI</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- 5. ACTIVE SECTOR ENTITIES -->
+            <section class="space-y-3">
+                <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono tracking-wider text-slate-400 uppercase">Sector Entities
+                        Monitor</span>
+                    <span id="entities-count" class="text-xs text-cyber-pink font-mono bg-cyber-pink/10 px-2 rounded">0
+                        Active</span>
+                </div>
+
+                <!-- Entity list -->
+                <div id="entities-list" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+                    <div id="empty-entities-state" class="text-center py-4 text-xs text-slate-500 font-mono">
+                        No custom meshes deployed. Double click the map to place items!
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footnote Info -->
+        <footer
+            class="p-4 border-t border-white/5 bg-slate-950 flex justify-between items-center text-[10px] text-slate-400 font-mono shrink-0">
+            <span>MAPLIBRE GL + THREEJS</span>
+            <button onclick="resetDefaultEnvironment()"
+                class="text-cyber-cyan hover:underline hover:text-cyber-cyan/80 transition-colors">RESET LAYERS</button>
+        </footer>
+    </aside>
+
+    <!-- Sound Effects Toggle & Floating Controls -->
+    <div class="absolute bottom-6 right-6 z-10 flex flex-col gap-3">
+        <!-- Dynamic Standalone Mobile Install Button -->
+        <button id="pwa-mobile-install-btn"
+            class="hidden md:hidden glass-panel px-4 py-3 bg-cyber-cyan/15 hover:bg-cyber-cyan border border-cyber-cyan text-cyber-cyan hover:text-slate-950 rounded-xl flex items-center justify-center gap-2 text-xs font-mono font-bold shadow-neon-cyan transition-all">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>INSTALL QUANTUM MAP APP</span>
+        </button>
+        <!-- Cinematic Audio Toggle -->
+        <button id="sfx-toggle" onclick="toggleAudio()"
+            class="glass-panel text-slate-400 hover:text-white px-4 py-3 rounded-xl flex items-center gap-2 text-xs font-mono shadow-xl transition-all border border-white/10 hover:border-cyber-cyan/40">
+            <span class="relative flex h-2 w-2" id="sfx-indicator">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-cyan opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-cyan"></span>
+            </span>
+            <span>CINEMATIC AUDIO: <strong id="audio-status" class="text-cyber-cyan">ACTIVE</strong></span>
+        </button>
+    </div>
+
+    <!-- Instructions Overlay Toast (Auto hides) -->
+    <div id="toast"
+        class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 glass-panel border border-cyber-cyan/50 shadow-neon-cyan text-xs font-mono py-3 px-5 rounded-xl flex items-center gap-3 transition-all duration-500 translate-y-20 opacity-0">
+        <div class="h-2 w-2 rounded-full bg-cyber-cyan animate-ping"></div>
+        <span id="toast-text" class="text-slate-100">Quantum Map Initializing...</span>
+    </div>
+
+    <!-- Cookie, Terms & Privacy Policy Consent Banner -->
+    <div id="cookie-consent-banner"
+        class="fixed bottom-6 left-6 z-[60] glass-panel border border-cyber-cyan/30 shadow-neon-cyan text-xs font-mono p-5 rounded-2xl max-w-sm flex flex-col gap-3 transition-all duration-500 transform translate-y-0 opacity-100">
+        <div class="flex items-center gap-2 text-cyber-cyan font-bold tracking-wider">
+            <svg class="w-4 h-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <span>TERMS & TELEMETRY PRIVACY</span>
+        </div>
+        <p class="text-[10px] text-slate-300 leading-relaxed font-sans normal-case">
+            By entering this geospatial matrix, you accept our <a
+                href="#terms" class="text-cyber-cyan underline cursor-pointer hover:text-cyber-cyan/80">Terms of Service</a> &amp;
+            <a href="#privacy" class="text-cyber-cyan underline cursor-pointer hover:text-cyber-cyan/80">Privacy Policy</a>. We
+            utilize telemetry cookies to calibrate standard spatial simulations.
+        </p>
+        <div class="flex gap-2">
+            <button id="cookie-accept-btn" onclick="acceptCookieConsent()"
+                class="flex-1 py-1.5 bg-cyber-cyan text-slate-950 font-bold rounded-lg hover:bg-cyber-cyan/80 hover:shadow-neon-cyan transition-all uppercase text-[10px] tracking-wider">
+                Accept Consent
+            </button>
+        </div>
+    </div>
+
+    <!-- PWA Floating Prompt Notification -->
+    <div id="pwa-prompt-notification"
+        class="fixed bottom-24 right-6 z-[60] glass-panel border border-cyber-pink/40 shadow-neon-pink text-xs font-mono p-5 rounded-2xl max-w-sm flex flex-col gap-3 transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none">
+        <div class="flex items-center gap-2 text-cyber-pink font-bold tracking-wider">
+            <svg class="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>🛰️ SYSTEM TRANSMISSION</span>
+        </div>
+        <p class="text-[10px] text-slate-300 leading-relaxed font-sans normal-case">
+            Install the <strong>Geospatial Quantum Engine</strong> on your local dashboard interface for seamless
+            off-grid capability and premium native execution.
+        </p>
+        <div class="flex gap-2">
+            <button onclick="handleAppInstallation()"
+                class="flex-1 py-1.5 bg-cyber-pink text-slate-950 font-bold rounded-lg hover:bg-cyber-pink/80 hover:shadow-neon-pink transition-all uppercase text-[10px] tracking-wider">
+                Install Engine
+            </button>
+            <button onclick="dismissPwaPrompt()"
+                class="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-300 rounded-lg hover:bg-white/10 transition-all uppercase text-[10px]">
+                Dismiss
+            </button>
+        </div>
+    </div>
+
+    <!-- Help Modal for new users -->
+    <div id="help-modal"
+        class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel max-w-md w-full p-6 rounded-2xl border border-white/10 shadow-2xl relative">
+            <h3
+                class="text-lg font-bold text-white tracking-wider font-mono uppercase mb-4 flex items-center gap-2 text-cyber-cyan">
+                <span>🛰️ UAE QUANTUM MAP OPERATIONAL</span>
+            </h3>
+            <div class="text-xs text-slate-300 space-y-3 leading-relaxed mb-6 font-sans">
+                <p>Welcome to the **3D Geospatial Interactive Matrix**. This platform integrates high-density **Maplibre
+                    GL** and **Three.js** to map custom procedurally generated nodes directly over the United Arab
+                    Emirates landscape.</p>
+
+                <h4 class="font-bold text-white font-mono uppercase text-xs pt-2">How to pilot:</h4>
+                <ul class="list-disc pl-4 space-y-1.5 font-mono text-[11px] text-slate-400">
+                    <li><strong class="text-slate-200">Right-click + Drag:</strong> Rotate spatial camera pitch &
+                        bearing.</li>
+                    <li><strong class="text-slate-200">Double Click Map:</strong> Spawns selected 3D structure and links
+                        sequential nodes dynamically!</li>
+                    <li><strong class="text-slate-200">POI Galleried Modals:</strong> Clicking map markers opens
+                        interactive glass popups featuring high-res galleries and playable YouTube video modules.</li>
+                </ul>
+            </div>
+            <button onclick="dismissHelp()"
+                class="w-full bg-cyber-cyan hover:bg-cyber-cyan/80 text-slate-950 font-bold font-mono py-3 rounded-xl transition-all shadow-neon-cyan uppercase">
+                Initialize Matrix
+            </button>
+        </div>
+    </div>
+
+    <!-- Map viewport container -->
+    <div id="map" class="w-full h-full"></div>
+
+    <!-- Maplibre GL JS -->
+    <script src="assets/js/maplibre-gl.js"></script>
+    <!-- Three.js (r128) -->
+    <script src="assets/js/three.min.js"></script>
+    <!-- GLTFLoader (r128 compatible) -->
+    <script src="assets/js/GLTFLoader.js"></script>
+    <!-- Fancybox 5 JS from CDN -->
+    <script src="assets/js/fancybox.umd.js"></script>
+
+    <!-- Map and Custom WebGL Integration Code -->
+    <script src="assets/js/index.js"></script>
+
+    <!-- PWA Service Worker Registration (offline boot + version handling) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => {
+                        console.log('[SW] Quantum Matrix offline engine registered:', reg.scope);
+                        // Auto-pull new shell silently when a deploy lands
+                        setInterval(() => reg.update(), 60 * 1000);
+                    })
+                    .catch((err) => console.warn('[SW] Registration failed:', err));
+
+                // Apply a silent shell refresh once a new SW is ready
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (sessionStorage.getItem('sw_reload') !== 'pending') return;
+                    sessionStorage.removeItem('sw_reload');
+                    window.location.reload();
+                });
+
+                navigator.serviceWorker.addEventListener('message', (e) => {
+                    if (e.data && e.data.type === 'SW_UPDATED') {
+                        console.log('[SW] New engine build available:', e.data.version, e.data.buildTime);
+                    }
+                });
+            });
+
+            // Ask the SW to take control on next load after a deploy
+            if (navigator.serviceWorker.controller) {
+                navigator.serviceWorker.controller.postMessage({ type: 'SW_CHECK_UPDATE' });
+            }
+            window.addEventListener('beforeunload', () => {
+                if (navigator.serviceWorker.controller) {
+                    sessionStorage.setItem('sw_reload', 'pending');
+                    navigator.serviceWorker.controller.postMessage({ type: 'SW_CHECK_UPDATE' });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
