@@ -1,0 +1,223 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "dubai",
+        "category": "Attractions",
+        "title": "The Dubai Fountain Show",
+        "desc": "Visual spectacular combining neon laser displays and synchronized audio frequencies.",
+        "images": [
+          "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1549944850-84e00be4115b?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/M166_4r0Lsc",
+        "phone": "+97143661688",
+        "web": "https://www.thedubaifountain.com",
+        "social": {
+          "insta": "https://instagram.com/dubai",
+          "fb": "https://facebook.com/dubai",
+          "x": "https://x.com/dubai"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.2744, 25.1972]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "dubai",
+        "category": "Shopping",
+        "title": "The Dubai Mall Matrix",
+        "desc": "High density quantum luxury retail terminal hosting over 1200 commercial nodes.",
+        "images": [
+          "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/Z0XGg4L3uQA",
+        "phone": "+971800382246255",
+        "web": "https://thedubaimall.com",
+        "social": {
+          "insta": "https://instagram.com/thedubaimall",
+          "fb": "https://facebook.com/thedubaimall",
+          "x": "https://x.com/thedubaimall"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.2784, 25.1986]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "dubai",
+        "category": "Transit",
+        "title": "Burj Khalifa Metro Terminal",
+        "desc": "High speed pneumatic mag-level transit hub connecting Dubai metropolitan zones.",
+        "images": [
+          "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/5D2t0bOatcQ",
+        "phone": "+9718009090",
+        "web": "https://rta.ae",
+        "social": {
+          "insta": "https://instagram.com/rta_dubai",
+          "fb": "https://facebook.com/rtadubai",
+          "x": "https://x.com/rta_dubai"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.2690, 25.2015]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "abudhabi",
+        "category": "Attractions",
+        "title": "Abu Dhabi Corniche Beach",
+        "desc": "Seaside coastal park hosting continuous security patrols and dynamic monitoring systems.",
+        "images": [
+          "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/W9LgG_2FpY8",
+        "phone": "+97126786000",
+        "web": "https://visitabudhabi.ae",
+        "social": {
+          "insta": "https://instagram.com/visitabudhabi",
+          "fb": "https://facebook.com/visitabudhabi",
+          "x": "https://x.com/visitabudhabi"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [54.3640, 24.4810]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "abudhabi",
+        "category": "POI",
+        "title": "Sheikh Zayed Grand Mosque",
+        "desc": "Architectural masterpiece with capacity for over 41,000 worshippers.",
+        "images": [
+          "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/XmZ_i7vS6R0",
+        "phone": "+97124191919",
+        "web": "https://www.szgmc.gov.ae",
+        "social": {
+          "insta": "https://instagram.com/szgmc_ae",
+          "fb": "https://facebook.com/szgmc",
+          "x": "https://x.com/szgmc"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [54.3210, 24.4340]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "sharjah",
+        "category": "Attractions",
+        "title": "Al Majaz Waterfront",
+        "desc": "Panoramic lagoon hub holding visual installations, sonic musical fountains, and family play coordinates.",
+        "images": [
+          "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/vAnQ8kO51d8",
+        "phone": "+97165110555",
+        "web": "https://almajaz.ae",
+        "social": {
+          "insta": "https://instagram.com/sharjah",
+          "fb": "https://facebook.com/sharjah",
+          "x": "https://x.com/sharjah"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.3920, 25.3225]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "sharjah",
+        "category": "Shopping",
+        "title": "Central Souk Sharjah",
+        "desc": "Historic architecture node housing traditional merchants under iconic blue vaulted domes.",
+        "images": [
+          "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/XyY39fC25s4",
+        "phone": "+97165111111",
+        "web": "https://sharjahcommerce.ae",
+        "social": {
+          "insta": "https://instagram.com/sharjahcommerce",
+          "fb": "https://facebook.com/sharjahcommerce",
+          "x": "https://x.com/sharjahcommerce"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.3888, 25.3340]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "rasalkhaimah",
+        "category": "Attractions",
+        "title": "Dhayah Fort Lookout",
+        "desc": "Historic 16th century hilltop battlefort offering sweeping panoramas of coastal oasis domains.",
+        "images": [
+          "https://images.unsplash.com/photo-1582730147233-0df152015091?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/0G6TIn1y3C0",
+        "phone": "+97172338998",
+        "web": "https://visitrasalkhaimah.com",
+        "social": {
+          "insta": "https://instagram.com/visitrasalkhaimah",
+          "fb": "https://facebook.com/visitrasalkhaimah",
+          "x": "https://x.com/visitrasalkhaimah"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [56.0298, 25.8825]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sector": "jebeljais",
+        "category": "Attractions",
+        "title": "Jais Flight Zipline Peak",
+        "desc": "The world's longest dynamic zipline, cutting through atmospheric coordinates at up to 150 km/h.",
+        "images": [
+          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+        ],
+        "youtube": "https://www.youtube.com/embed/G6j5n08q_Xw",
+        "phone": "+97172046250",
+        "web": "https://visitjebeljais.com",
+        "social": {
+          "insta": "https://instagram.com/jebeljais",
+          "fb": "https://facebook.com/jebeljais",
+          "x": "https://x.com/jebeljais"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [56.1265, 25.9468]
+      }
+    }
+  ]
+}
